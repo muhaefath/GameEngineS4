@@ -4,18 +4,31 @@ using UnityEngine;
 
 public class MasterPlayer : MonoBehaviour {
 
-	public static MasterPlayer Instance;
 
+
+
+	[Space]
+
+	[Header ("Navigasi")]
 	public float SpeedJalanPlayer;
 	public float SpeedRotasiPlayer;
+
 	[Space]
+
+	[Header ("Senjata")]
 	public GameObject PeluruPrefab;
 	public Transform PosisiPeluruKeluar;
+
+	[Space]
+	public bool CekUdahDeketPohon = false;
+
 
 	void Update()
 	{
 		NavigasiJalan ();
 		TembakPeluru ();
+		TebangPohon ();
+
 	}
 
 	void NavigasiJalan()
@@ -44,9 +57,24 @@ public class MasterPlayer : MonoBehaviour {
 
 	void TembakPeluru()
 	{
+		if(CekUdahDeketPohon == true)
+		{
+			return;
+		}
 		if(Input.GetKeyDown(KeyCode.Space))
 		{
 			Instantiate (PeluruPrefab,PosisiPeluruKeluar.transform.position,PosisiPeluruKeluar.transform.rotation);
+		}
+	}
+
+	void TebangPohon()
+	{
+		if(ManagerGame.Instance.PohonSasaran != null )
+		{
+			if(Input.GetKeyDown(KeyCode.UpArrow))
+			{
+				ManagerGame.Instance.PohonSasaran.CekUdahDitebang = true;
+			}
 		}
 	}
 }
