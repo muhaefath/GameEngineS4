@@ -1,0 +1,286 @@
+fileFormatVersion: 2
+guid: b9d55e38ac7dab9468e0f620cbf18037
+timeCreated: 1508606057
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Camera
+    100004: Chest
+    100006: //RootNode
+    100008: Cylinder.000
+    100010: Foot Roll.L
+    100012: Foot Roll.R
+    100014: Foot.L
+    100016: Foot.R
+    100018: Hand.L
+    100020: Hand.R
+    100022: Head
+    100024: Head_end
+    100026: Leg Control.L
+    100028: Leg Control.R
+    100030: Leg Pole Target.L
+    100032: Leg Pole Target.L_end
+    100034: Leg Pole Target.R
+    100036: Leg Pole Target.R_end
+    100038: Lower Arm.L
+    100040: Lower Arm.R
+    100042: Lower finger.L
+    100044: Lower finger.L_end
+    100046: Lower finger.R
+    100048: Lower finger.R_end
+    100050: Lower Leg.L
+    100052: Lower Leg.L.001
+    100054: Lower Leg.L.001_end
+    100056: Lower Leg.L_end
+    100058: Lower Leg.R
+    100060: Lower Leg.R.001
+    100062: Lower Leg.R.001_end
+    100064: Lower Leg.R_end
+    100066: Lower Thumb.L
+    100068: Lower Thumb.L_end
+    100070: Lower Thumb.R
+    100072: Lower Thumb.R_end
+    100074: Neck
+    100076: Plane
+    100078: Root
+    100080: Spot
+    100082: Spot.001
+    100084: Spot.002
+    100086: Spot.003
+    100088: Toes Control.L
+    100090: Toes Control.L_end
+    100092: Toes Control.R
+    100094: Toes Control.R_end
+    100096: Toes.L
+    100098: Toes.L_end
+    100100: Toes.R
+    100102: Toes.R_end
+    100104: Torso
+    100106: Upper Arm.L
+    100108: Upper Arm.R
+    100110: Upper Finger.L
+    100112: Upper Finger.R
+    100114: Upper Leg.L
+    100116: Upper Leg.R
+    100118: upper Thumb.L
+    100120: upper Thumb.R
+    400000: Armature
+    400002: Camera
+    400004: Chest
+    400006: //RootNode
+    400008: Cylinder.000
+    400010: Foot Roll.L
+    400012: Foot Roll.R
+    400014: Foot.L
+    400016: Foot.R
+    400018: Hand.L
+    400020: Hand.R
+    400022: Head
+    400024: Head_end
+    400026: Leg Control.L
+    400028: Leg Control.R
+    400030: Leg Pole Target.L
+    400032: Leg Pole Target.L_end
+    400034: Leg Pole Target.R
+    400036: Leg Pole Target.R_end
+    400038: Lower Arm.L
+    400040: Lower Arm.R
+    400042: Lower finger.L
+    400044: Lower finger.L_end
+    400046: Lower finger.R
+    400048: Lower finger.R_end
+    400050: Lower Leg.L
+    400052: Lower Leg.L.001
+    400054: Lower Leg.L.001_end
+    400056: Lower Leg.L_end
+    400058: Lower Leg.R
+    400060: Lower Leg.R.001
+    400062: Lower Leg.R.001_end
+    400064: Lower Leg.R_end
+    400066: Lower Thumb.L
+    400068: Lower Thumb.L_end
+    400070: Lower Thumb.R
+    400072: Lower Thumb.R_end
+    400074: Neck
+    400076: Plane
+    400078: Root
+    400080: Spot
+    400082: Spot.001
+    400084: Spot.002
+    400086: Spot.003
+    400088: Toes Control.L
+    400090: Toes Control.L_end
+    400092: Toes Control.R
+    400094: Toes Control.R_end
+    400096: Toes.L
+    400098: Toes.L_end
+    400100: Toes.R
+    400102: Toes.R_end
+    400104: Torso
+    400106: Upper Arm.L
+    400108: Upper Arm.R
+    400110: Upper Finger.L
+    400112: Upper Finger.R
+    400114: Upper Leg.L
+    400116: Upper Leg.R
+    400118: upper Thumb.L
+    400120: upper Thumb.R
+    2000000: Camera
+    2300000: Plane
+    3300000: Plane
+    4300000: Plane
+    4300002: Cylinder.000
+    7400000: Armature|ArmatureAction
+    7400002: Armature|ArmatureAction.001
+    9500000: //RootNode
+    10800000: Spot
+    10800002: Spot.001
+    10800004: Spot.002
+    10800006: Spot.003
+    13700000: Cylinder.000
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.006
+    second: {fileID: 2100000, guid: eb8fc4c25637c7343b3bfc53c46adb81, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: No Name
+    second: {fileID: 2100000, guid: bb866d057ad9f894b83979b80083f3fc, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Armature|ArmatureAction
+      takeName: Armature|ArmatureAction
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|ArmatureAction.001
+      takeName: Armature|ArmatureAction.001
+      firstFrame: 0
+      lastFrame: 15
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
