@@ -1417,8 +1417,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1773893039661338}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -7.01}
+  m_LocalRotation: {x: 0, y: 0.8585249, z: 0, w: -0.5127719}
+  m_LocalPosition: {x: 0.6820345, y: 0, z: -5.37561}
   m_LocalScale: {x: 0.2906134, y: 0.2906134, z: 0.2906134}
   m_Children:
   - {fileID: 4686314508412714}
@@ -1896,6 +1896,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpeedJalanPlayer: 10
   SpeedRotasiPlayer: 10
+  AnimatorKarakrer: {fileID: 0}
+  joystick: {fileID: 0}
+  MoveVector: {x: 0, y: 0, z: 0}
+  MoveVector2: {x: 0, y: 0, z: 0}
+  PrefabKarakterUtama: {fileID: 0}
+  CurrRotasi: {x: 0, y: 0, z: 0}
   PeluruPrefab: {fileID: 1762217860951994, guid: 6239cac3b0313ba4da2b5587644dfa7e,
     type: 2}
   PosisiPeluruKeluar: {fileID: 4508669445585950}

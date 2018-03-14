@@ -12,6 +12,15 @@ public class MasterPlayer : MonoBehaviour {
 	[Header ("Navigasi")]
 	public float SpeedJalanPlayer;
 	public float SpeedRotasiPlayer;
+	[SerializeField] Animator AnimatorKarakrer;
+	private Rigidbody thisrigid;
+
+	[Space]
+	public VirtualJoystick joystick;
+	public Vector3 MoveVector;
+	public Vector3 MoveVector2;
+	public GameObject PrefabKarakterUtama;
+	public Vector3 CurrRotasi;
 
 	[Space]
 
@@ -23,12 +32,27 @@ public class MasterPlayer : MonoBehaviour {
 	public bool CekUdahDeketPohon = false;
 
 
+	void Start()
+	{
+		AnimatorKarakrer = GetComponent<Animator> ();
+	}
+
 	void Update()
 	{
 		NavigasiJalan ();
 		TembakPeluru ();
 		TebangPohon ();
 
+		if (joystick.inputvector == Vector3.zero) {
+			SpeedJalanPlayer = 0;
+		} else {
+			SpeedJalanPlayer =10;
+		}
+		MoveVector = PoolInput ();
+
+		MoveVector2 = PoolInput2  ();
+
+		Move ();
 	}
 
 	void NavigasiJalan()
@@ -76,5 +100,78 @@ public class MasterPlayer : MonoBehaviour {
 				ManagerGame.Instance.PohonSasaran.CekUdahDitebang = true;
 			}
 		}
+	}
+
+
+	private void Move()
+	{
+		transform.rotation = Quaternion.Euler(MoveVector2);
+		transform.Translate(0,0, SpeedJalanPlayer*Time.deltaTime);
+
+		PrefabKarakterUtama.transform.rotation = this.transform.rotation;
+		PrefabKarakterUtama.transform.position = this.transform.position;
+
+	}
+
+	private Vector3 PoolInput()
+	{
+		Vector3 dir = Vector3.zero;
+
+		dir.x = Input.GetAxis ("Horizontal")  ;
+		dir.z = Input.GetAxis ("Vertical");
+
+		if(dir.magnitude > 1)
+		{
+			dir.Normalize ();
+
+		}
+
+		if(joystick.inputvector != Vector3.zero)
+		{
+			dir = joystick.inputvector;
+		}
+		return dir;
+	}
+
+	private Vector3 PoolInput2()
+	{
+		Vector3 dir = Vector3.zero;
+
+
+
+
+		if(dir.magnitude > 1)
+		{
+			dir.Normalize ();
+
+		}
+		if (joystick.inputvector != Vector3.zero) {
+
+			if (joystick.inputvector.x >= 0 && joystick.inputvector.z > 0) {
+				dir.y = (joystick.inputvector.x - joystick.inputvector.z) * 45 + 45;
+				CurrRotasi.y = dir.y;
+			} else if (joystick.inputvector.x > 0 && joystick.inputvector.z <= 0) {
+				dir.y = 135 - (joystick.inputvector.x + joystick.inputvector.z) * 45;
+				CurrRotasi.y = dir.y;
+			} else if (joystick.inputvector.x <= 0 && joystick.inputvector.z < 0) {
+				dir.y = 225 + (joystick.inputvector.z - joystick.inputvector.x) * 45;
+				CurrRotasi.y = dir.y;
+			} else if (joystick.inputvector.x < 0 && joystick.inputvector.z >= 0) {
+				dir.y = 315 + (joystick.inputvector.x + joystick.inputvector.z) * 45;
+				CurrRotasi.y = dir.y;
+			}
+			AnimatorKarakrer.SetBool ("Jalan", true);
+			//thisrigid.constraints = RigidbodyConstraints.None | RigidbodyConstraints.FreezeRotation;
+
+		} else {
+
+			dir.y = CurrRotasi.y;
+			AnimatorKarakrer.SetBool("Jalan",false);
+
+		
+		}
+
+
+		return dir;
 	}
 }
