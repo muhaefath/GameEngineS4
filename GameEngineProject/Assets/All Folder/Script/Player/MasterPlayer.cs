@@ -18,7 +18,6 @@ public class MasterPlayer : MonoBehaviour {
 	[Space]
 	public VirtualJoystick joystick;
 	public Vector3 MoveVector;
-	public Vector3 MoveVector2;
 	public GameObject PrefabKarakterUtama;
 	public Vector3 CurrRotasi;
 
@@ -39,7 +38,7 @@ public class MasterPlayer : MonoBehaviour {
 
 	void Update()
 	{
-		NavigasiJalan ();
+		//NavigasiJalan ();
 		TembakPeluru ();
 		TebangPohon ();
 
@@ -48,13 +47,13 @@ public class MasterPlayer : MonoBehaviour {
 		} else {
 			SpeedJalanPlayer =10;
 		}
-		MoveVector = PoolInput ();
 
-		MoveVector2 = PoolInput2  ();
+		MoveVector = PoolInput  ();
 
 		Move ();
 	}
 
+	/*
 	void NavigasiJalan()
 	{
 		if(Input.GetKey(KeyCode.A))
@@ -78,6 +77,7 @@ public class MasterPlayer : MonoBehaviour {
 			transform.Translate (0,0,SpeedJalanPlayer*Time.deltaTime);
 		}
 	}
+	*/
 
 	void TembakPeluru()
 	{
@@ -105,7 +105,7 @@ public class MasterPlayer : MonoBehaviour {
 
 	private void Move()
 	{
-		transform.rotation = Quaternion.Euler(MoveVector2);
+		transform.rotation = Quaternion.Euler(MoveVector);
 		transform.Translate(0,0, SpeedJalanPlayer*Time.deltaTime);
 
 		PrefabKarakterUtama.transform.rotation = this.transform.rotation;
@@ -113,31 +113,11 @@ public class MasterPlayer : MonoBehaviour {
 
 	}
 
+
+
 	private Vector3 PoolInput()
 	{
 		Vector3 dir = Vector3.zero;
-
-		dir.x = Input.GetAxis ("Horizontal")  ;
-		dir.z = Input.GetAxis ("Vertical");
-
-		if(dir.magnitude > 1)
-		{
-			dir.Normalize ();
-
-		}
-
-		if(joystick.inputvector != Vector3.zero)
-		{
-			dir = joystick.inputvector;
-		}
-		return dir;
-	}
-
-	private Vector3 PoolInput2()
-	{
-		Vector3 dir = Vector3.zero;
-
-
 
 
 		if(dir.magnitude > 1)
