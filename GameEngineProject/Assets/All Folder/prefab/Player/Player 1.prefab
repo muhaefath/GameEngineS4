@@ -235,7 +235,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1301062626758826
 GameObject:
   m_ObjectHideFlags: 1
@@ -1167,9 +1167,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1628517331212058}
-  m_LocalRotation: {x: -0.5220386, y: -0.15884441, z: 0.26325065, w: 0.79557735}
-  m_LocalPosition: {x: 0.006330946, y: 0.00286179, z: -0.0011482844}
-  m_LocalScale: {x: 0.99999964, y: 0.9999998, z: 0.99999994}
+  m_LocalRotation: {x: -0.52203864, y: -0.15884455, z: 0.26325074, w: 0.7955773}
+  m_LocalPosition: {x: 0.00633095, y: 0.0028617976, z: -0.0011482907}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4248757455322570}
   m_Father: {fileID: 4724572590192026}
@@ -1417,8 +1417,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1773893039661338}
-  m_LocalRotation: {x: 0, y: 0.8585249, z: 0, w: -0.5127719}
-  m_LocalPosition: {x: 0.6820345, y: 0, z: -5.37561}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -7.01}
   m_LocalScale: {x: 0.2906134, y: 0.2906134, z: 0.2906134}
   m_Children:
   - {fileID: 4686314508412714}
@@ -1801,7 +1801,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: ba0a0738a2b022644b5fdb449970b8ef, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1894,13 +1894,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42602caa29c35144781017dc3ff485f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedJalanPlayer: 10
+  SpeedJalanPlayer: 1
   SpeedRotasiPlayer: 10
   AnimatorKarakrer: {fileID: 0}
   joystick: {fileID: 0}
   MoveVector: {x: 0, y: 0, z: 0}
-  MoveVector2: {x: 0, y: 0, z: 0}
-  PrefabKarakterUtama: {fileID: 0}
+  PrefabKarakterUtama: {fileID: 1773893039661338}
   CurrRotasi: {x: 0, y: 0, z: 0}
   PeluruPrefab: {fileID: 1762217860951994, guid: 6239cac3b0313ba4da2b5587644dfa7e,
     type: 2}

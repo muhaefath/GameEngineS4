@@ -140,7 +140,7 @@ public class MasterPlayer : MonoBehaviour {
 				dir.y = 315 + (joystick.inputvector.x + joystick.inputvector.z) * 45;
 				CurrRotasi.y = dir.y;
 			}
-			AnimatorKarakrer.SetBool ("Jalan", true);
+			AnimatorKarakrer.SetBool("Jalan",true);
 			//thisrigid.constraints = RigidbodyConstraints.None | RigidbodyConstraints.FreezeRotation;
 
 		} else {
