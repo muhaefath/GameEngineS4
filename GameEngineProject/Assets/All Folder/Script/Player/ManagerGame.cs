@@ -15,6 +15,13 @@ public class ManagerGame : MonoBehaviour {
 
 	void Update()
 	{
-		
+		if(PohonSasaran!=null)
+		{
+			if((Vector3.Distance (PohonSasaran.transform.position, MasterPlayer.instance.transform.position) > 2))
+			{
+				MasterPlayer.instance.CekUdahDeketPohon = false;
+			}
+		}
+
 	}
 }

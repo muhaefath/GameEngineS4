@@ -52,5 +52,13 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler,IPointerUpHandler,IPo
 	}
 
 
+	public void JoystcikNembak()
+	{
+		MasterPlayer.instance.TembakPeluruBool = true;
+	}
 
+	public void JoystcikDiangkat()
+	{
+		MasterPlayer.instance.LepasButtonTebangPohon ();
+	}
 }

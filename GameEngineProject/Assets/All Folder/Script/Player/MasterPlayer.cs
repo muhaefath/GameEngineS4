@@ -5,7 +5,7 @@ using UnityEngine;
 public class MasterPlayer : MonoBehaviour {
 
 
-
+	public static MasterPlayer instance;
 
 	[Space]
 
@@ -13,6 +13,11 @@ public class MasterPlayer : MonoBehaviour {
 	public float SpeedJalanPlayer;
 	public float SpeedRotasiPlayer;
 	[SerializeField] Animator AnimatorKarakrer;
+
+	public float WaktuJedaTembakPeluru;
+	public float WaktuJedaTebangPohon;
+
+	public bool TembakPeluruBool;
 	private Rigidbody thisrigid;
 
 	[Space]
@@ -28,8 +33,12 @@ public class MasterPlayer : MonoBehaviour {
 	public Transform PosisiPeluruKeluar;
 
 	[Space]
-	public bool CekUdahDeketPohon = false;
+	public bool CekUdahDeketPohon = false; // bila sudah dekak pohon joystick nembak berubah jadi tebang pohon
 
+	void Awake()
+	{
+		instance = this;
+	}
 
 	void Start()
 	{
@@ -39,8 +48,8 @@ public class MasterPlayer : MonoBehaviour {
 	void Update()
 	{
 		//NavigasiJalan ();
-		TembakPeluru ();
-		TebangPohon ();
+		//TembakPeluru ();
+		//TebangPohon ();
 
 		if (joystick.inputvector == Vector3.zero) {
 			SpeedJalanPlayer = 0;
@@ -48,6 +57,16 @@ public class MasterPlayer : MonoBehaviour {
 			SpeedJalanPlayer =10;
 		}
 
+		if(TembakPeluruBool)
+		{
+			if(CekUdahDeketPohon == true)
+			{
+				StartCoroutine (JedaTebangPohon());
+				//TembakPeluruBool = false;
+				return;
+			}
+			TembakPeluru ();
+		}
 		MoveVector = PoolInput  ();
 
 		Move ();
@@ -79,18 +98,65 @@ public class MasterPlayer : MonoBehaviour {
 	}
 	*/
 
-	void TembakPeluru()
+	public void TembakPeluru()
 	{
-		if(CekUdahDeketPohon == true)
-		{
-			return;
-		}
-		if(Input.GetKeyDown(KeyCode.Space))
-		{
-			Instantiate (PeluruPrefab,PosisiPeluruKeluar.transform.position,PosisiPeluruKeluar.transform.rotation);
+		
+		AnimatorKarakrer.Play ("Tembak");
+
+		StartCoroutine (JedaTembakPeluru());
+
+	}
+
+	public void TebangPohon()
+	{
+		
+		//StartCoroutine ();
+	}
+
+	public IEnumerator JedaTebangPohon()
+	{
+		
+		if (WaktuJedaTebangPohon > 0) {
+			WaktuJedaTebangPohon -= Time.deltaTime;
+			AnimatorKarakrer.SetBool ("Rakit",true);
+
+		} else {
+			ManagerGame.Instance.DaftarPohonDidalamScene.Remove (ManagerGame.Instance.PohonSasaran);
+			Destroy (ManagerGame.Instance.PohonSasaran.gameObject);
+			ManagerGame.Instance.PohonSasaran = null;
+
+			CekUdahDeketPohon = false;
+			AnimatorKarakrer.SetBool ("Rakit",false);
+			TembakPeluruBool = false;
+
+			WaktuJedaTebangPohon = 2f;
+			yield return 0;
 		}
 	}
 
+	public void LepasButtonTebangPohon()
+	{
+		AnimatorKarakrer.SetBool ("Rakit",false);
+		TembakPeluruBool = false;
+
+		WaktuJedaTebangPohon = 2f;
+	}
+
+	public IEnumerator JedaTembakPeluru()
+	{
+		
+
+		if (WaktuJedaTembakPeluru >= 0) {
+			WaktuJedaTembakPeluru -= Time.deltaTime;
+			yield return 0;
+		} else {
+			WaktuJedaTembakPeluru = 0.5f;
+			Instantiate (PeluruPrefab,PosisiPeluruKeluar.transform.position,PosisiPeluruKeluar.transform.rotation);
+			TembakPeluruBool = false;
+		}
+	
+	}
+	/*
 	void TebangPohon()
 	{
 		if(ManagerGame.Instance.PohonSasaran != null )
@@ -101,7 +167,7 @@ public class MasterPlayer : MonoBehaviour {
 			}
 		}
 	}
-
+	*/
 
 	private void Move()
 	{
