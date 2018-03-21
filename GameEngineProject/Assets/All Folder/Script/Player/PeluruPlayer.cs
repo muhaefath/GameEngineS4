@@ -5,10 +5,15 @@ using UnityEngine;
 public class PeluruPlayer : MonoBehaviour {
 
 	public float SpeedPeluru;
-	
+
+	void Start(){
+		transform.Rotate (0,180,0);
+	}
 	// Update is called once per frame
 	void Update () {
-		transform.Translate (0,0,SpeedPeluru*Time.deltaTime);
+		
+		transform.Translate (0,0,-SpeedPeluru*Time.deltaTime);
+
 		Destroy (gameObject,1);
 	}
 

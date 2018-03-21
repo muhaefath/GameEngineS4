@@ -22,6 +22,7 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler,IPointerUpHandler,IPo
 
 	public virtual void OnDrag(PointerEventData ped)
 	{
+		MasterPlayer.instance.TombakDipegang.SetActive (true);
 		Vector2 pos;
 		if(RectTransformUtility.ScreenPointToLocalPointInRectangle(background.rectTransform,ped.position,ped.pressEventCamera,out pos))
 		{
@@ -54,11 +55,15 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler,IPointerUpHandler,IPo
 
 	public void JoystcikNembak()
 	{
+		
 		MasterPlayer.instance.TembakPeluruBool = true;
 	}
 
 	public void JoystcikDiangkat()
 	{
-		MasterPlayer.instance.LepasButtonTebangPohon ();
+		if(MasterPlayer.instance.CekUdahDeketPohon == true)
+		{
+			MasterPlayer.instance.LepasButtonTebangPohon ();
+		}
 	}
 }
