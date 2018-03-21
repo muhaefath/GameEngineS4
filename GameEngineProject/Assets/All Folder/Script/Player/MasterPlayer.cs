@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class MasterPlayer : MonoBehaviour {
 
 
@@ -38,6 +38,8 @@ public class MasterPlayer : MonoBehaviour {
 	[Header ("Trap")]
 	public float WaktuJedaTrap;
 	public bool CekTombolJebakanDipencet;
+	public Image BarTrap;
+	public float IntBarTrap;
 
 	public bool CekUdahDeketPohon = false; // bila sudah dekak pohon joystick nembak berubah jadi tebang pohon
 
@@ -49,13 +51,12 @@ public class MasterPlayer : MonoBehaviour {
 	void Start()
 	{
 		AnimatorKarakrer = GetComponent<Animator> ();
+		BarTrap.enabled = false;
 	}
 
 	void Update()
 	{
-		//NavigasiJalan ();
-		//TembakPeluru ();
-		//TebangPohon ();
+		BarTrap.fillAmount = IntBarTrap;
 
 		if (joystick.inputvector == Vector3.zero) {
 			SpeedJalanPlayer = 0;
@@ -141,12 +142,17 @@ public class MasterPlayer : MonoBehaviour {
 	public IEnumerator PasangJebakan()
 	{
 		if (WaktuJedaTrap >= 0) {
+			BarTrap.enabled = true;
+			IntBarTrap -= Time.deltaTime;
+
 			AnimatorKarakrer.SetBool ("Rakit",true);
 			WaktuJedaTrap -= Time.deltaTime;
 			TombakDipegang.SetActive (false);
 			yield return 0;
 		} else {
-			WaktuJedaTrap = 2f;
+			WaktuJedaTrap = 1.5f;
+			BarTrap.enabled = false;
+
 			AnimatorKarakrer.SetBool ("Rakit",false);
 			CekTombolJebakanDipencet = false;
 			TombakDipegang.SetActive (true);
@@ -158,10 +164,12 @@ public class MasterPlayer : MonoBehaviour {
 		
 		AnimatorKarakrer.SetBool ("Rakit",false);
 
-		WaktuJedaTrap = 2f;
+		WaktuJedaTrap = 1.5f;
+
+		IntBarTrap = 1.5f;
 
 		CekTombolJebakanDipencet = false;
-
+		BarTrap.enabled = false;
 		TombakDipegang.SetActive (true);
 	}
 
