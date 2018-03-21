@@ -6,9 +6,16 @@ public class AiMusuhKejarTarget : MonoBehaviour {
 
 	public float Speed;
 	public GameObject TemplePusat;
-	
+
+
 	// Update is called once per frame
+
+	void Start()
+	{
+		ManagerGame.Instance.DaftarMusuhDidalamScene.Add (this);
+	}
 	void Update () {
+		//ManagerGame.Instance.
 		AIJalan ();
 	}
 
@@ -25,4 +32,11 @@ public class AiMusuhKejarTarget : MonoBehaviour {
 		this.transform.rotation = Quaternion.Slerp (this.transform.rotation,Quaternion.LookRotation(SelisihPosisi),0.1f);
 		this.transform.Translate (0,0,Speed * Time.deltaTime);
 	}
+
+	/*
+	void MatiKarenaTombak()
+	{
+		
+	}
+	*/
 }

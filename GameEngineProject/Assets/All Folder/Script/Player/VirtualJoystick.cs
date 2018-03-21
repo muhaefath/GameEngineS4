@@ -64,6 +64,18 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler,IPointerUpHandler,IPo
 		if(MasterPlayer.instance.CekUdahDeketPohon == true)
 		{
 			MasterPlayer.instance.LepasButtonTebangPohon ();
+			return;
 		}
+
+	}
+
+	public void TombolTrapDiangkat()
+	{
+		MasterPlayer.instance.LepasButtonRakitTrap ();
+	}
+
+	public void JoystickRakitTrap()
+	{
+		MasterPlayer.instance.CekTombolJebakanDipencet = true;
 	}
 }

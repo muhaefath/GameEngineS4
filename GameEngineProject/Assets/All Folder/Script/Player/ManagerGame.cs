@@ -4,8 +4,16 @@ using UnityEngine;
 
 public class ManagerGame : MonoBehaviour {
 	public static ManagerGame Instance;
+
+	[Space]
+	[Header ("Manage Pohon")]
 	public List<TebangPohon> DaftarPohonDidalamScene;
 	public TebangPohon PohonSasaran;
+
+	[Space]
+	[Header ("Manage Musuh")]
+	public List<AiMusuhKejarTarget> DaftarMusuhDidalamScene;
+
 
 	void Awake()
 	{
@@ -23,5 +31,10 @@ public class ManagerGame : MonoBehaviour {
 			}
 		}
 
+	}
+
+	public void RakitJebakan()
+	{
+		
 	}
 }

@@ -12,7 +12,7 @@ public class MasterPlayer : MonoBehaviour {
 	[Header ("Navigasi")]
 	public float SpeedJalanPlayer;
 	public float SpeedRotasiPlayer;
-	[SerializeField] Animator AnimatorKarakrer;
+	public Animator AnimatorKarakrer;
 
 	public float WaktuJedaTembakPeluru;
 	public float WaktuJedaTebangPohon;
@@ -33,6 +33,12 @@ public class MasterPlayer : MonoBehaviour {
 	public Transform PosisiPeluruKeluar;
 	public GameObject TombakDipegang;
 	[Space]
+
+	[Space]
+	[Header ("Trap")]
+	public float WaktuJedaTrap;
+	public bool CekTombolJebakanDipencet;
+
 	public bool CekUdahDeketPohon = false; // bila sudah dekak pohon joystick nembak berubah jadi tebang pohon
 
 	void Awake()
@@ -59,46 +65,25 @@ public class MasterPlayer : MonoBehaviour {
 
 		if(TembakPeluruBool)
 		{
-			
 			if(CekUdahDeketPohon == true)
 			{
 				StartCoroutine (JedaTebangPohon());
 				//TembakPeluruBool = false;
 				return;
 			}
-
 			TembakPeluru ();
 		}
+
+		if (CekTombolJebakanDipencet) {
+			StartCoroutine (PasangJebakan());
+		}
+
 		MoveVector = PoolInput  ();
 
 		Move ();
 	}
 
-	/*
-	void NavigasiJalan()
-	{
-		if(Input.GetKey(KeyCode.A))
-		{
-			transform.rotation = Quaternion.Euler (0,-90,0);
-			transform.Translate (0,0,SpeedJalanPlayer*Time.deltaTime);
-		}
-		else if(Input.GetKey(KeyCode.W))
-		{
-			transform.rotation = Quaternion.Euler (0,0,0);
-			transform.Translate (0,0,SpeedJalanPlayer*Time.deltaTime);
-		}
-		else if(Input.GetKey(KeyCode.D))
-		{
-			transform.rotation = Quaternion.Euler (0,90,0);
-			transform.Translate (0,0,SpeedJalanPlayer*Time.deltaTime);
-		}
-		else if(Input.GetKey(KeyCode.S))
-		{
-			transform.rotation = Quaternion.Euler (0,-180,0);
-			transform.Translate (0,0,SpeedJalanPlayer*Time.deltaTime);
-		}
-	}
-	*/
+
 
 	public void TembakPeluru()
 	{
@@ -123,7 +108,7 @@ public class MasterPlayer : MonoBehaviour {
 			WaktuJedaTebangPohon -= Time.deltaTime;
 			ManagerGame.Instance.PohonSasaran.JumlahBarTebangPohon -= Time.deltaTime;
 			ManagerGame.Instance.PohonSasaran.BarProgressTebangPohon.enabled = true;
-			AnimatorKarakrer.SetBool ("Rakit",true);
+			AnimatorKarakrer.SetBool ("Tebang",true);
 
 		} else {
 			ManagerGame.Instance.DaftarPohonDidalamScene.Remove (ManagerGame.Instance.PohonSasaran);
@@ -131,14 +116,13 @@ public class MasterPlayer : MonoBehaviour {
 			ManagerGame.Instance.PohonSasaran = null;
 
 			CekUdahDeketPohon = false;
-			AnimatorKarakrer.SetBool ("Rakit",false);
+			AnimatorKarakrer.SetBool ("Tebang",false);
 			TembakPeluruBool = false;
 
 			WaktuJedaTebangPohon = 2f;
 			yield return 0;
 		}
 	}
-
 	public void LepasButtonTebangPohon()
 	{
 		if(ManagerGame.Instance.PohonSasaran != null)
@@ -147,11 +131,40 @@ public class MasterPlayer : MonoBehaviour {
 			ManagerGame.Instance.PohonSasaran.BarProgressTebangPohon.enabled = false;
 		}
 
-		AnimatorKarakrer.SetBool ("Rakit",false);
+		AnimatorKarakrer.SetBool ("Tebang",false);
 		TembakPeluruBool = false;
 
 		WaktuJedaTebangPohon = 2f;
 	}
+
+
+	public IEnumerator PasangJebakan()
+	{
+		if (WaktuJedaTrap >= 0) {
+			AnimatorKarakrer.SetBool ("Rakit",true);
+			WaktuJedaTrap -= Time.deltaTime;
+			TombakDipegang.SetActive (false);
+			yield return 0;
+		} else {
+			WaktuJedaTrap = 2f;
+			AnimatorKarakrer.SetBool ("Rakit",false);
+			CekTombolJebakanDipencet = false;
+			TombakDipegang.SetActive (true);
+		}
+	}
+
+	public void LepasButtonRakitTrap()
+	{
+		
+		AnimatorKarakrer.SetBool ("Rakit",false);
+
+		WaktuJedaTrap = 2f;
+
+		CekTombolJebakanDipencet = false;
+
+		TombakDipegang.SetActive (true);
+	}
+
 
 	public IEnumerator JedaTembakPeluru()
 	{
@@ -166,22 +179,17 @@ public class MasterPlayer : MonoBehaviour {
 			TombakDipegang.SetActive (false);
 			Instantiate (PeluruPrefab,PosisiPeluruKeluar.transform.position,PosisiPeluruKeluar.transform.rotation);
 			TembakPeluruBool = false;
-
+			StartCoroutine (JedaTombakMuncul());
 		}
-
 	}
-	/*
-	void TebangPohon()
+
+	public IEnumerator JedaTombakMuncul()
 	{
-		if(ManagerGame.Instance.PohonSasaran != null )
-		{
-			if(Input.GetKeyDown(KeyCode.UpArrow))
-			{
-				ManagerGame.Instance.PohonSasaran.CekUdahDitebang = true;
-			}
-		}
+		yield return new WaitForSeconds (0.5f);
+		TombakDipegang.SetActive (true);
 	}
-	*/
+
+
 
 	private void Move()
 	{
@@ -228,10 +236,10 @@ public class MasterPlayer : MonoBehaviour {
 			dir.y = CurrRotasi.y;
 			AnimatorKarakrer.SetBool("Jalan",false);
 
-		
 		}
-
-
+			
 		return dir;
 	}
+
+
 }

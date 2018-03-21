@@ -31,8 +31,7 @@ public class TebangPohon : MonoBehaviour {
 			PlayerUdahDeket = false;
 
 		}
-
-
+			
 		if(CekUdahDitebang == true)
 		{
 			Destroy (gameObject);

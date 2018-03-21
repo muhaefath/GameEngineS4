@@ -6,6 +6,7 @@ public class PeluruPlayer : MonoBehaviour {
 
 	public float SpeedPeluru;
 
+
 	void Start(){
 		transform.Rotate (0,180,0);
 	}
