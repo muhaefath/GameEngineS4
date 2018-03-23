@@ -9,6 +9,13 @@ public class MasterPlayer : MonoBehaviour {
 
 	[Space]
 
+	[Header ("Status")]
+	public float DarahBarInt;
+	public Image DarahaBar;
+
+
+	[Space]
+
 	[Header ("Navigasi")]
 	public float SpeedJalanPlayer;
 	public float SpeedRotasiPlayer;
@@ -32,6 +39,9 @@ public class MasterPlayer : MonoBehaviour {
 	public GameObject PeluruPrefab;
 	public Transform PosisiPeluruKeluar;
 	public GameObject TombakDipegang;
+	public GameObject KapakDipegang;
+	public Image[] JoystickKananLogo;
+
 	[Space]
 
 	[Space]
@@ -52,11 +62,18 @@ public class MasterPlayer : MonoBehaviour {
 	{
 		AnimatorKarakrer = GetComponent<Animator> ();
 		BarTrap.enabled = false;
+		for (int i = 0; i < JoystickKananLogo.Length; i++) {
+			JoystickKananLogo [i].enabled = false;
+		}
+		JoystickKananLogo [0].enabled = true;
+
 	}
 
 	void Update()
 	{
-		BarTrap.fillAmount = IntBarTrap;
+		BarTrap.fillAmount = IntBarTrap / 3;
+		DarahaBar.fillAmount  =  DarahBarInt / 10;
+
 
 		if (joystick.inputvector == Vector3.zero) {
 			SpeedJalanPlayer = 0;
@@ -72,7 +89,10 @@ public class MasterPlayer : MonoBehaviour {
 				//TembakPeluruBool = false;
 				return;
 			}
-			TembakPeluru ();
+			if(ManagerGame.Instance.JumlahAmunisi > 0)
+			{
+				TembakPeluru ();
+			}
 		}
 
 		if (CekTombolJebakanDipencet) {
@@ -82,6 +102,18 @@ public class MasterPlayer : MonoBehaviour {
 		MoveVector = PoolInput  ();
 
 		Move ();
+
+		if (CekUdahDeketPohon == true) {
+			for (int i = 0; i < JoystickKananLogo.Length; i++) {
+				JoystickKananLogo [i].enabled = false;
+			}
+			JoystickKananLogo [1].enabled = true;
+		} else {
+			for (int i = 0; i < JoystickKananLogo.Length; i++) {
+				JoystickKananLogo [i].enabled = false;
+			}
+			JoystickKananLogo [0].enabled = true;
+		}
 	}
 
 
@@ -106,12 +138,18 @@ public class MasterPlayer : MonoBehaviour {
 	{
 		
 		if (WaktuJedaTebangPohon > 0) {
+			KapakDipegang.SetActive (true);
+			TombakDipegang.SetActive (false);
+
 			WaktuJedaTebangPohon -= Time.deltaTime;
 			ManagerGame.Instance.PohonSasaran.JumlahBarTebangPohon -= Time.deltaTime;
 			ManagerGame.Instance.PohonSasaran.BarProgressTebangPohon.enabled = true;
 			AnimatorKarakrer.SetBool ("Tebang",true);
 
 		} else {
+			ManagerGame.Instance.JumlahKayu += 10;
+			KapakDipegang.SetActive (false);
+			TombakDipegang.SetActive (true);
 			ManagerGame.Instance.DaftarPohonDidalamScene.Remove (ManagerGame.Instance.PohonSasaran);
 			Destroy (ManagerGame.Instance.PohonSasaran.gameObject);
 			ManagerGame.Instance.PohonSasaran = null;
@@ -126,11 +164,14 @@ public class MasterPlayer : MonoBehaviour {
 	}
 	public void LepasButtonTebangPohon()
 	{
+		
 		if(ManagerGame.Instance.PohonSasaran != null)
 		{
 			ManagerGame.Instance.PohonSasaran.JumlahBarTebangPohon = 1;
 			ManagerGame.Instance.PohonSasaran.BarProgressTebangPohon.enabled = false;
 		}
+		KapakDipegang.SetActive (false);
+		TombakDipegang.SetActive (true);
 
 		AnimatorKarakrer.SetBool ("Tebang",false);
 		TembakPeluruBool = false;
@@ -164,9 +205,9 @@ public class MasterPlayer : MonoBehaviour {
 		
 		AnimatorKarakrer.SetBool ("Rakit",false);
 
-		WaktuJedaTrap = 1.5f;
+		WaktuJedaTrap = 3f;
 
-		IntBarTrap = 1.5f;
+		IntBarTrap = 3f;
 
 		CekTombolJebakanDipencet = false;
 		BarTrap.enabled = false;
@@ -186,6 +227,7 @@ public class MasterPlayer : MonoBehaviour {
 			WaktuJedaTembakPeluru = 0.5f;
 			TombakDipegang.SetActive (false);
 			Instantiate (PeluruPrefab,PosisiPeluruKeluar.transform.position,PosisiPeluruKeluar.transform.rotation);
+			ManagerGame.Instance.JumlahAmunisi -= 1;
 			TembakPeluruBool = false;
 			StartCoroutine (JedaTombakMuncul());
 		}

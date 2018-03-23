@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class ManagerGame : MonoBehaviour {
 	public static ManagerGame Instance;
 
@@ -14,11 +14,30 @@ public class ManagerGame : MonoBehaviour {
 	[Header ("Manage Musuh")]
 	public List<AiMusuhKejarTarget> DaftarMusuhDidalamScene;
 
+	[Space]
+	public float DarahBarInt;
+	public Image DarahBar;
+
+	public int JumlahKayu;
+	public Text JumlahKayuText;
+
+	public int JumlahAmunisi;
+	public Text JumlahAmunisiText;
+
+	public GameObject[] ManageTrap;
 
 	void Awake()
 	{
 		Instance = this;
 		PohonSasaran = null;
+	}
+
+	void Start()
+	{
+		for (int i = 0; i < ManageTrap.Length; i++) {
+			ManageTrap [i].SetActive(false) ;
+		}
+		ManageTrap [0].SetActive(true) ;
 	}
 
 	void Update()
@@ -31,10 +50,23 @@ public class ManagerGame : MonoBehaviour {
 			}
 		}
 
+		DarahBar.fillAmount = DarahBarInt / 10;
+		JumlahKayuText.text = "" + JumlahKayu;
+		JumlahAmunisiText.text = "" + JumlahAmunisi;
 	}
 
-	public void RakitJebakan()
+	public void TutupMenuTrap()
 	{
-		
+		for (int i = 0; i < ManageTrap.Length; i++) {
+			ManageTrap [i].SetActive(false) ;	
+		}
+		ManageTrap [0].SetActive(true) ;	}
+
+	public void BukaMenuTrap()
+	{
+		for (int i = 0; i < ManageTrap.Length; i++) {
+			ManageTrap [i].SetActive(true) ;
+		}
+		ManageTrap [0].SetActive(false) ;	
 	}
 }

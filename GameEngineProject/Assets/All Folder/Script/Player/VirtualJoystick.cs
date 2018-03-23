@@ -74,8 +74,13 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler,IPointerUpHandler,IPo
 		MasterPlayer.instance.LepasButtonRakitTrap ();
 	}
 
-	public void JoystickRakitTrap()
+	public void JoystickRakitTrap(int IndexTrap)
 	{
-		MasterPlayer.instance.CekTombolJebakanDipencet = true;
+		if (IndexTrap == 0) {
+			MasterPlayer.instance.CekTombolJebakanDipencet = true;
+		} else if(IndexTrap == 1)
+		{
+			
+		}
 	}
 }

@@ -216,8 +216,8 @@ GameObject:
   - component: {fileID: 4641191757471956}
   - component: {fileID: 95984861730160958}
   - component: {fileID: 114802138870553612}
-  - component: {fileID: 54866890515755710}
   - component: {fileID: 65531975244900304}
+  - component: {fileID: 54866890515755710}
   m_Layer: 0
   m_Name: Musuh 1
   m_TagString: Enemy
@@ -870,8 +870,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1321340738750384}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.4964, y: 0.68, z: -7.9087}
-  m_LocalScale: {x: 0.27256086, y: 0.27256078, z: 0.27256078}
+  m_LocalPosition: {x: 0.32, y: 0.09, z: -4.31}
+  m_LocalScale: {x: 0.12598795, y: 0.1259879, z: 0.1259879}
   m_Children:
   - {fileID: 4298345799720252}
   - {fileID: 4445414725104574}

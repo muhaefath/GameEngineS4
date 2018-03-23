@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Peluru
   - Enemy
+  - Temple
   layers:
   - Default
   - TransparentFX
