@@ -1,23 +1,39 @@
 fileFormatVersion: 2
-guid: e6c09eedb6606bf4499737a6d4011c7a
-timeCreated: 1508472581
+guid: 11ccc730ae419db4f810eb3df42a399c
+timeCreated: 1508597934
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Cylinder_006
-    7400000: Default Take
+    100000: Armature
+    100002: Bone
+    100004: Bone_end
+    100006: Camera
+    100008: Cylinder.000
+    100010: Cylinder.006
+    100012: //RootNode
+    400000: Armature
+    400002: Bone
+    400004: Bone_end
+    400006: Camera
+    400008: Cylinder.000
+    400010: Cylinder.006
+    400012: //RootNode
+    2000000: Camera
+    2300000: Cylinder.000
+    2300002: Cylinder.006
+    3300000: Cylinder.000
+    3300002: Cylinder.006
+    4300000: Cylinder.000
+    4300002: Cylinder.006
+    7400000: Armature|ArmatureAction
     9500000: //RootNode
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material__Trap_Bottom
-    second: {fileID: 2100000, guid: 210d1848ec114984ca07b394894ff8a2, type: 2}
+      name: Material
+    second: {fileID: 2100000, guid: 902ed49b382b0404dad7a9ed06142acd, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -43,7 +59,35 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Armature|ArmatureAction
+      takeName: Armature|ArmatureAction
+      firstFrame: 0
+      lastFrame: 5
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []

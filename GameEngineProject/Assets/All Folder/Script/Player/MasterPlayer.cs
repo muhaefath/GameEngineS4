@@ -47,9 +47,16 @@ public class MasterPlayer : MonoBehaviour {
 	[Space]
 	[Header ("Trap")]
 	public float WaktuJedaTrap;
-	public bool CekTombolJebakanDipencet;
+	public bool CekTombolJebakanDipencetTrap1;
+	public bool CekTombolJebakanDipencetTrap2;
 	public Image BarTrap;
 	public float IntBarTrap;
+
+	public GameObject Trap1;
+	public Transform PosisiTrap1;
+	public GameObject Trap2;
+	public Transform PosisiTrap2;
+	public Transform ParentTrap2;
 
 	public bool CekUdahDeketPohon = false; // bila sudah dekak pohon joystick nembak berubah jadi tebang pohon
 
@@ -60,7 +67,11 @@ public class MasterPlayer : MonoBehaviour {
 
 	void Start()
 	{
+		
+
 		AnimatorKarakrer = GetComponent<Animator> ();
+
+
 		BarTrap.enabled = false;
 		for (int i = 0; i < JoystickKananLogo.Length; i++) {
 			JoystickKananLogo [i].enabled = false;
@@ -95,8 +106,12 @@ public class MasterPlayer : MonoBehaviour {
 			}
 		}
 
-		if (CekTombolJebakanDipencet) {
-			StartCoroutine (PasangJebakan());
+		if (CekTombolJebakanDipencetTrap1) {
+			StartCoroutine (PasangJebakan(0));
+		}
+		if(CekTombolJebakanDipencetTrap2)
+		{
+			StartCoroutine (PasangJebakan(1));
 		}
 
 		MoveVector = PoolInput  ();
@@ -180,7 +195,7 @@ public class MasterPlayer : MonoBehaviour {
 	}
 
 
-	public IEnumerator PasangJebakan()
+	public IEnumerator PasangJebakan(int IndexJebakan)
 	{
 		if (WaktuJedaTrap >= 0) {
 			BarTrap.enabled = true;
@@ -191,11 +206,24 @@ public class MasterPlayer : MonoBehaviour {
 			TombakDipegang.SetActive (false);
 			yield return 0;
 		} else {
+			if (IndexJebakan == 0) {
+				Instantiate (Trap1, PosisiTrap1.position, PosisiTrap1.rotation);
+				CekTombolJebakanDipencetTrap1 = false;
+			} else {
+				//Instantiate (Trap2, PosisiTrap2.position, PosisiTrap2.transform.rotation);
+				GameObject build = Instantiate (Trap2,PosisiTrap2.position,PosisiTrap2.rotation) as GameObject; 
+				build.transform.parent = ParentTrap2.transform;
+
+				Debug.Log (PosisiTrap2.position);
+				CekTombolJebakanDipencetTrap2 = false;
+			}
+
 			WaktuJedaTrap = 1.5f;
 			BarTrap.enabled = false;
 
 			AnimatorKarakrer.SetBool ("Rakit",false);
-			CekTombolJebakanDipencet = false;
+
+
 			TombakDipegang.SetActive (true);
 		}
 	}
@@ -209,7 +237,8 @@ public class MasterPlayer : MonoBehaviour {
 
 		IntBarTrap = 3f;
 
-		CekTombolJebakanDipencet = false;
+		CekTombolJebakanDipencetTrap1 = false;
+		CekTombolJebakanDipencetTrap2 = false;
 		BarTrap.enabled = false;
 		TombakDipegang.SetActive (true);
 	}
@@ -268,6 +297,7 @@ public class MasterPlayer : MonoBehaviour {
 			if (joystick.inputvector.x >= 0 && joystick.inputvector.z > 0) {
 				dir.y = (joystick.inputvector.x - joystick.inputvector.z) * 45 + 45;
 				CurrRotasi.y = dir.y;
+
 			} else if (joystick.inputvector.x > 0 && joystick.inputvector.z <= 0) {
 				dir.y = 135 - (joystick.inputvector.x + joystick.inputvector.z) * 45;
 				CurrRotasi.y = dir.y;
@@ -278,6 +308,7 @@ public class MasterPlayer : MonoBehaviour {
 				dir.y = 315 + (joystick.inputvector.x + joystick.inputvector.z) * 45;
 				CurrRotasi.y = dir.y;
 			}
+			PosisiTrap2.rotation = Quaternion.Euler (-90,CurrRotasi.y,0);
 			AnimatorKarakrer.SetBool("Jalan",true);
 			//thisrigid.constraints = RigidbodyConstraints.None | RigidbodyConstraints.FreezeRotation;
 

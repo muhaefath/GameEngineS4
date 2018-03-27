@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114088996492366786}
   m_Layer: 0
   m_Name: PeluruMusuh
-  m_TagString: Peluru
+  m_TagString: PeluruMusuh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

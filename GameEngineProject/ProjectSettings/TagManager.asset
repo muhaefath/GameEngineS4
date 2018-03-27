@@ -7,6 +7,8 @@ TagManager:
   - Peluru
   - Enemy
   - Temple
+  - Trap1
+  - PeluruMusuh
   layers:
   - Default
   - TransparentFX

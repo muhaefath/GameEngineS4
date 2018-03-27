@@ -36,6 +36,11 @@ public class AiMusuhKejarTarget : MonoBehaviour {
 			if (Vector3.Distance (MasterPlayer.instance.transform.position, this.transform.position) < 5) {
 				AnimMusuh.Play ("Nyerang");
 				StartCoroutine (JedaNyerangMusuh());
+				if (Vector3.Distance (MasterPlayer.instance.transform.position, this.transform.position) < 1) {
+					Speed = 0;	
+				} else {
+					Speed = 1;	
+				}
 			} else {
 				WaktuJedaNyerang =  0.8f;
 			}

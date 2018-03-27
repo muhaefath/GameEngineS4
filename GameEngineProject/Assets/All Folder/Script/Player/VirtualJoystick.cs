@@ -77,10 +77,10 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler,IPointerUpHandler,IPo
 	public void JoystickRakitTrap(int IndexTrap)
 	{
 		if (IndexTrap == 0) {
-			MasterPlayer.instance.CekTombolJebakanDipencet = true;
+			MasterPlayer.instance.CekTombolJebakanDipencetTrap1 = true;
 		} else if(IndexTrap == 1)
 		{
-			
+			MasterPlayer.instance.CekTombolJebakanDipencetTrap2 = true;
 		}
 	}
 }
