@@ -9,12 +9,17 @@ public class TebangPohon : MonoBehaviour {
 	public Image BarProgressTebangPohon;
 	public float JumlahBarTebangPohon;
 
+
+	void Awake()
+	{
+	}
 	void Start()
 	{
 		JumlahBarTebangPohon = 1f;
 		BarProgressTebangPohon = GetComponentInChildren<Image> ();
 		BarProgressTebangPohon.enabled = false;
 		ManagerGame.Instance.DaftarPohonDidalamScene.Add (this);
+
 		//BarProgressTebangPohon.fillAmount = JumlahBarTebangPohon;
 	}
 
