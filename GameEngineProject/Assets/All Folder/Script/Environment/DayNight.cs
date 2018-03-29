@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class DayNight : MonoBehaviour {
 	public float speed;
+
+
+
+	void Start()
+	{
+		
+	}
 	void Update()
 	{
 		if(this.transform.rotation == Quaternion.Euler(190,0,0))
@@ -14,10 +21,23 @@ public class DayNight : MonoBehaviour {
 			//return;
 		}
 		this.transform.Rotate (speed*Time.deltaTime , 0, 0);
+
+
+		if (this.transform.rotation.eulerAngles.x > 0 && this.transform.rotation.eulerAngles.x < 180) {
+			
+			ManagerGame.Instance.WaktuSiang = true;
+			ManagerGame.Instance.MusuhKeluarWave = false;
+
+		} else 
+		{
+			ManagerGame.Instance.WaktuSiang = false;
+
+		}
 	}
 
 	public void LanjutPagi()
 	{
+		
 		//Time.timeScale = 1;
 		//ManagerBuilding.Instance.MalamDatang = false;
 		//ManagerBuilding.Instance.MenuBuilding [4].SetActive (false);

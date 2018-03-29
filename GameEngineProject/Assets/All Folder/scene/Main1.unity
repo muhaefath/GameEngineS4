@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43667555, g: 0.48427188, b: 0.56452423, a: 1}
+  m_IndirectSpecularColor: {r: 0.4366757, g: 0.48427194, b: 0.5645252, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -2028,12 +2028,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 657036401}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18bd5476c30e7814c962add30734135b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 7
 --- !u!1 &661306104
 GameObject:
   m_ObjectHideFlags: 0
@@ -2931,6 +2931,7 @@ GameObject:
   - component: {fileID: 1125340753}
   - component: {fileID: 1125340754}
   - component: {fileID: 1125340755}
+  - component: {fileID: 1125340756}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -2961,7 +2962,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1125340752}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a498dbd4b84bac4ba3cb06af550ba49, type: 3}
   m_Name: 
@@ -2973,6 +2974,7 @@ MonoBehaviour:
   - {fileID: 1785867765}
   - {fileID: 1858753468}
   WaktuJedaMusuhKeluar: 3
+  Matahari: {fileID: 657036404}
 --- !u!114 &1125340755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2997,6 +2999,21 @@ MonoBehaviour:
   - {fileID: 2031569821}
   - {fileID: 974788601}
   - {fileID: 1681948779}
+  WaveLevel: 1
+  JumlahMusuhKeluar: 0
+  WaktuSiang: 0
+  MusuhKeluarWave: 0
+--- !u!114 &1125340756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1125340752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f50754a78dbb4014c93098e3f3622665, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1208914221
 GameObject:
   m_ObjectHideFlags: 0

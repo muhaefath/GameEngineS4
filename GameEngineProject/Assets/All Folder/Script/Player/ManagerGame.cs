@@ -26,6 +26,12 @@ public class ManagerGame : MonoBehaviour {
 
 	public GameObject[] ManageTrap;
 
+	public int WaveLevel;
+	public int JumlahMusuhKeluar;
+	public bool WaktuSiang;
+
+	public bool MusuhKeluarWave;
+
 	void Awake()
 	{
 		Instance = this;

@@ -9,10 +9,23 @@ public class AiMusuhKeluar : MonoBehaviour {
 
 	public float WaktuJedaMusuhKeluar = 3f;
 
+	public DayNight Matahari;
+
+
 
 	public void Update()
 	{
-		StartCoroutine (KeluarMusuh());
+		if (ManagerGame.Instance.WaktuSiang == false && ManagerGame.Instance.MusuhKeluarWave == false) {
+			if (ManagerGame.Instance.JumlahMusuhKeluar < ManagerGame.Instance.WaveLevel * 2 + 3) {
+				Matahari.speed = 0;
+				StartCoroutine (KeluarMusuh ());
+			} else {
+				Matahari.speed = 5;
+				ManagerGame.Instance.MusuhKeluarWave = true;
+				ManagerGame.Instance.WaveLevel += 1;
+				ManagerGame.Instance.JumlahMusuhKeluar = 0;
+			}
+		} 
 	}
 
 	public IEnumerator KeluarMusuh()
@@ -24,6 +37,7 @@ public class AiMusuhKeluar : MonoBehaviour {
 		} else {
 			int IndexPosisi = Random.Range (0,3);
 			Instantiate (MusuhPrefab,PosisiKeluarMusuh[IndexPosisi].position,PosisiKeluarMusuh[IndexPosisi].rotation);
+			ManagerGame.Instance.JumlahMusuhKeluar += 1;
 			WaktuJedaMusuhKeluar = 3;
 		}
 

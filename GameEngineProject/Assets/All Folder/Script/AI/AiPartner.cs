@@ -6,11 +6,18 @@ public class AiPartner : MonoBehaviour {
 
 	public float Speed;
 
-	public float WaktuJedaTebangPohon;
+
 	public GameObject KapakDipegang;
 	public GameObject TombakDipegang;
 
+	public float WaktuJedaTebangPohon;
 	public TebangPohon SasaranPohon;
+
+	public float WaktuJedaSerangMusuh;
+	public AiMusuhKejarTarget SasaranMusuh;
+	public GameObject TowerCandi;
+	public GameObject PeluruPartner;
+	public Transform PosisiPeluru;
 
 	Animator AnimatorKarakrer;
 
@@ -21,15 +28,13 @@ public class AiPartner : MonoBehaviour {
 		AnimatorKarakrer = GetComponent<Animator> ();
 		//IndexPohon = 
 		SasaranPohon = ManagerGame.Instance.DaftarPohonDidalamScene [0] ;
-	
-
 
 		for (int i = 0; i < ManagerGame.Instance.DaftarPohonDidalamScene.Count; i++) {
 			if((this.transform.position -  ManagerGame.Instance.DaftarPohonDidalamScene [i].transform.position).magnitude < (this.transform.position -  SasaranPohon.transform.position).magnitude)
 			{
 				SasaranPohon = ManagerGame.Instance.DaftarPohonDidalamScene [i];
 			}
-			//Debug.Log ( (this.transform.position -  ManagerGame.Instance.DaftarPohonDidalamScene [i].transform.position).magnitude);
+
 		}
 
 
@@ -37,24 +42,40 @@ public class AiPartner : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-		if(ManagerGame.Instance.DaftarPohonDidalamScene.Count > 0)
-		{
-			// kalo malem dia cari pohon
-			CariPohon();
+
+		if (ManagerGame.Instance.DaftarMusuhDidalamScene.Count == 0) {
+			if (ManagerGame.Instance.DaftarPohonDidalamScene.Count > 0) {
+				
+				CariPohon ();
+
+			}
+		} else {
+			SasaranMusuh = ManagerGame.Instance.DaftarMusuhDidalamScene [0];
+			for (int i = 0; i < ManagerGame.Instance.DaftarMusuhDidalamScene.Count; i++) {
+				if((TowerCandi.transform.position -  ManagerGame.Instance.DaftarMusuhDidalamScene [i].transform.position).magnitude < (TowerCandi.transform.position -  SasaranMusuh.transform.position).magnitude)
+				{
+					SasaranMusuh = ManagerGame.Instance.DaftarMusuhDidalamScene [i];
+
+				}
+
+			}
+
+			CariMusuh ();
 		}
 	}
 
 	void CariPohon()
 	{
-		
+		SasaranPohon = ManagerGame.Instance.DaftarPohonDidalamScene [0] ;
 		Vector3 SelisihPosisiPlayer = SasaranPohon.transform.position - this.transform.position ;
 
 		this.transform.rotation = Quaternion.Slerp (this.transform.rotation,Quaternion.LookRotation(SelisihPosisiPlayer),0.1f);
 		if (Vector3.Distance (SasaranPohon.transform.position, this.transform.position) > 1) {
+			AnimatorKarakrer.SetBool ("Jalan",true);
 			this.transform.Translate (0, 0, Speed * Time.deltaTime);
 
 		} else {
+			AnimatorKarakrer.SetBool ("Jalan",false);
 			StartCoroutine (TebangPohon());
 		}
 	}
@@ -78,19 +99,68 @@ public class AiPartner : MonoBehaviour {
 
 			ManagerGame.Instance.DaftarPohonDidalamScene.Remove (SasaranPohon);
 			Destroy (SasaranPohon.gameObject);
-			SasaranPohon = ManagerGame.Instance.DaftarPohonDidalamScene [0] ;
 
-			for (int i = 0; i < ManagerGame.Instance.DaftarPohonDidalamScene.Count; i++) {
-				if((this.transform.position -  ManagerGame.Instance.DaftarPohonDidalamScene [i].transform.position).magnitude < (this.transform.position -  SasaranPohon.transform.position).magnitude)
-				{
-					SasaranPohon = ManagerGame.Instance.DaftarPohonDidalamScene [i];
+			if(ManagerGame.Instance.DaftarPohonDidalamScene.Count > 0)
+			{
+				SasaranPohon = ManagerGame.Instance.DaftarPohonDidalamScene [0] ;
+
+				for (int i = 0; i < ManagerGame.Instance.DaftarPohonDidalamScene.Count; i++) {
+					if((this.transform.position -  ManagerGame.Instance.DaftarPohonDidalamScene [i].transform.position).magnitude < (this.transform.position -  SasaranPohon.transform.position).magnitude)
+					{
+						SasaranPohon = ManagerGame.Instance.DaftarPohonDidalamScene [i];
+					}
+			
 				}
-				//Debug.Log ( (this.transform.position -  ManagerGame.Instance.DaftarPohonDidalamScene [i].transform.position).magnitude);
 			}
 
 			AnimatorKarakrer.SetBool ("Tebang",false);
 
 			WaktuJedaTebangPohon = 2f;
+			yield return 0;
+		}
+	}
+
+	void CariMusuh()
+	{
+		
+		KapakDipegang.SetActive (false);
+		TombakDipegang.SetActive (true);
+
+		AnimatorKarakrer.SetBool ("Tebang",false);
+		WaktuJedaTebangPohon = 2f;
+
+		
+
+		
+		Vector3 SelisihPosisiPlayer = SasaranMusuh.transform.position - this.transform.position ;
+
+		this.transform.rotation = Quaternion.Slerp (this.transform.rotation,Quaternion.LookRotation(SelisihPosisiPlayer),0.1f);
+		if (Vector3.Distance (SasaranMusuh.transform.position, this.transform.position) > 2) {
+			
+			this.transform.Translate (0, 0, Speed * Time.deltaTime);
+
+		} else {
+			StartCoroutine (TembakMusuh());
+
+
+		}
+	}
+
+	IEnumerator TembakMusuh()
+	{
+		if (WaktuJedaSerangMusuh > 0) {
+			
+
+			WaktuJedaSerangMusuh -= Time.deltaTime;
+
+
+			AnimatorKarakrer.Play ("Tembak");
+
+		} else {
+			
+			Instantiate (PeluruPartner,PosisiPeluru.transform.position,PosisiPeluru.transform.rotation);
+
+			WaktuJedaSerangMusuh = 1f;
 			yield return 0;
 		}
 	}

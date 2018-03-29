@@ -22,6 +22,7 @@ public class PeluruPlayer : MonoBehaviour {
 	{
 		if(col.gameObject.tag == "Enemy")
 		{
+			ManagerGame.Instance.DaftarMusuhDidalamScene.Remove (col.gameObject.GetComponent<AiMusuhKejarTarget>());
 			Destroy (col.gameObject);
 			Destroy (gameObject);
 		}
