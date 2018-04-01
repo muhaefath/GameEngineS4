@@ -10,8 +10,10 @@ public class TebangPohon : MonoBehaviour {
 	public float JumlahBarTebangPohon;
 
 
+
 	void Awake()
 	{
+		
 	}
 	void Start()
 	{

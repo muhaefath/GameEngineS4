@@ -20,6 +20,9 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler,IPointerUpHandler,IPo
 
 	}
 
+
+
+
 	public virtual void OnDrag(PointerEventData ped)
 	{
 		MasterPlayer.instance.TombakDipegang.SetActive (true);
@@ -29,7 +32,7 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler,IPointerUpHandler,IPo
 			pos.x = (pos.x / background.rectTransform.sizeDelta.x);
 			pos.y = (pos.y / background.rectTransform.sizeDelta.y);
 
-			inputvector = new Vector3 (pos.x * 2- 1,0, pos.y*2 -1);
+			inputvector = new Vector3 (pos.x ,0, pos.y);
 			inputvector = (inputvector.magnitude > 1.0f) ? inputvector.normalized: inputvector;
 
 			//joymove
@@ -61,6 +64,9 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler,IPointerUpHandler,IPo
 
 	public void JoystcikDiangkat()
 	{
+		inputvector = Vector3.zero;
+		virjoystrick.rectTransform.anchoredPosition = Vector3.zero;
+
 		if(MasterPlayer.instance.CekUdahDeketPohon == true)
 		{
 			MasterPlayer.instance.LepasButtonTebangPohon ();
@@ -81,6 +87,14 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler,IPointerUpHandler,IPo
 		} else if(IndexTrap == 1)
 		{
 			MasterPlayer.instance.CekTombolJebakanDipencetTrap2 = true;
+		}else if(IndexTrap ==2)
+		{
+			MasterPlayer.instance.CekTombolBuatPartner = true;
 		}
+	}
+
+	public void BeliPeluru()
+	{
+		ManagerGame.Instance.JumlahAmunisi += 10;
 	}
 }

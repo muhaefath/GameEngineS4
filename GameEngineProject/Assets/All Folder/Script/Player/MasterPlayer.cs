@@ -42,6 +42,11 @@ public class MasterPlayer : MonoBehaviour {
 	public GameObject KapakDipegang;
 	public Image[] JoystickKananLogo;
 
+	[Header ("Partner")]
+	public bool CekTombolBuatPartner;
+	public GameObject PartnerPrefab;
+	public Transform PosisiPartner;
+
 	[Space]
 
 	[Space]
@@ -94,27 +99,36 @@ public class MasterPlayer : MonoBehaviour {
 
 		if(TembakPeluruBool)
 		{
+			
 			if(CekUdahDeketPohon == true)
 			{
 				StartCoroutine (JedaTebangPohon());
 				//TembakPeluruBool = false;
 				return;
 			}
-			if(ManagerGame.Instance.JumlahAmunisi > 0)
-			{
+			if (ManagerGame.Instance.JumlahAmunisi > 0) {
 				TembakPeluru ();
+			} else {
+				TembakPeluruBool = false;
+				return;
 			}
+
 		}
 
 		if (CekTombolJebakanDipencetTrap1) {
 			StartCoroutine (PasangJebakan(0));
 		}
-		if(CekTombolJebakanDipencetTrap2)
+		else if(CekTombolJebakanDipencetTrap2)
 		{
 			StartCoroutine (PasangJebakan(1));
+		}else if(CekTombolBuatPartner)
+		{
+			StartCoroutine (PasangJebakan(2));
 		}
 
+
 		MoveVector = PoolInput  ();
+
 
 		Move ();
 
@@ -209,13 +223,17 @@ public class MasterPlayer : MonoBehaviour {
 			if (IndexJebakan == 0) {
 				Instantiate (Trap1, PosisiTrap1.position, PosisiTrap1.rotation);
 				CekTombolJebakanDipencetTrap1 = false;
-			} else {
+			} else if(IndexJebakan == 1) {
 				//Instantiate (Trap2, PosisiTrap2.position, PosisiTrap2.transform.rotation);
 				GameObject build = Instantiate (Trap2,PosisiTrap2.position,PosisiTrap2.rotation) as GameObject; 
 				build.transform.parent = ParentTrap2.transform;
 
-				Debug.Log (PosisiTrap2.position);
+
 				CekTombolJebakanDipencetTrap2 = false;
+			} else if(IndexJebakan == 2)
+			{
+				Instantiate (PartnerPrefab, PosisiPartner.position, PosisiPartner.rotation);
+				CekTombolBuatPartner = false;
 			}
 
 			WaktuJedaTrap = 1.5f;
@@ -239,6 +257,7 @@ public class MasterPlayer : MonoBehaviour {
 
 		CekTombolJebakanDipencetTrap1 = false;
 		CekTombolJebakanDipencetTrap2 = false;
+		CekTombolBuatPartner = false;
 		BarTrap.enabled = false;
 		TombakDipegang.SetActive (true);
 	}
@@ -321,6 +340,7 @@ public class MasterPlayer : MonoBehaviour {
 			
 		return dir;
 	}
+
 
 
 }
