@@ -94,7 +94,7 @@ public class MasterPlayer : MonoBehaviour {
 		if (joystick.inputvector == Vector3.zero) {
 			SpeedJalanPlayer = 0;
 		} else {
-			SpeedJalanPlayer =10;
+			SpeedJalanPlayer =5;
 		}
 
 		if(TembakPeluruBool)

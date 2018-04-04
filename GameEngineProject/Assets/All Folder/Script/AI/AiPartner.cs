@@ -46,17 +46,20 @@ public class AiPartner : MonoBehaviour {
 
 		AIMaster ();
 		StartCoroutine (HitungWaktuHidup());
+
+
 	}
 
 	void AIMaster()
 	{
-		if (ManagerGame.Instance.DaftarMusuhDidalamScene.Count == 0) {
+		if (ManagerGame.Instance.DaftarMusuhDidalamScene.Count <= 0) {
+			
 			if (ManagerGame.Instance.DaftarPohonDidalamScene.Count > 0) {
 
 				CariPohon ();
 
 			} else {
-		
+				
 				AnimatorKarakrer.SetBool ("Tebang",false);
 				KapakDipegang.SetActive (false);
 				TombakDipegang.SetActive (true);
@@ -94,13 +97,14 @@ public class AiPartner : MonoBehaviour {
 
 		this.transform.rotation = Quaternion.Slerp (this.transform.rotation,Quaternion.LookRotation(SelisihPosisiPlayer),0.1f);
 		if (Vector3.Distance (SasaranPohon.transform.position, this.transform.position) > 1.5f) {
+			PartnerAgent.speed = 1;
 			AnimatorKarakrer.SetBool ("Jalan",true);
 			//this.transform.Translate (0, 0, Speed * Time.deltaTime);
 
 			PartnerAgent.SetDestination (SasaranPohon.transform.position);
 
 		} else {
-			
+			PartnerAgent.speed = 0;
 			AnimatorKarakrer.SetBool ("Jalan",false);
 			StartCoroutine (TebangPohon());
 
@@ -165,6 +169,9 @@ public class AiPartner : MonoBehaviour {
 		Vector3 SelisihPosisiPlayer = SasaranMusuh.transform.position - this.transform.position ;
 
 		this.transform.rotation = Quaternion.Slerp (this.transform.rotation,Quaternion.LookRotation(SelisihPosisiPlayer),0.1f);
+
+
+
 		if (Vector3.Distance (SasaranMusuh.transform.position, this.transform.position) > 2) {
 			PartnerAgent.speed = 1;
 			AnimatorKarakrer.SetBool ("Jalan",true);
