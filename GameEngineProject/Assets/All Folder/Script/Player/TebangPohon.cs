@@ -34,7 +34,7 @@ public class TebangPohon : MonoBehaviour {
 
 			PlayerUdahDeket = true;
 			ManagerGame.Instance.PohonSasaran = this;
-			MasterPlayer.instance.CekUdahDeketPohon = true;
+
 
 		} else {
 

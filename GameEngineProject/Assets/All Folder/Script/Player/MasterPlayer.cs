@@ -187,7 +187,7 @@ public class MasterPlayer : MonoBehaviour {
 			WaktuJedaTebangPohon = 2f;
 			yield return 0;
 
-			CekUdahDeketPohon = false;
+
 		}
 	}
 	public void LepasButtonTebangPohon()
