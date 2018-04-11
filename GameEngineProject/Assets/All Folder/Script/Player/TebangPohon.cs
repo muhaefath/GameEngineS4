@@ -9,7 +9,7 @@ public class TebangPohon : MonoBehaviour {
 	public Image BarProgressTebangPohon;
 	public float JumlahBarTebangPohon;
 
-
+	public Animator Anim;
 
 	void Awake()
 	{
@@ -19,6 +19,7 @@ public class TebangPohon : MonoBehaviour {
 	{
 		JumlahBarTebangPohon = 1f;
 		BarProgressTebangPohon = GetComponentInChildren<Image> ();
+		Anim = GetComponent<Animator> ();
 		BarProgressTebangPohon.enabled = false;
 		ManagerGame.Instance.DaftarPohonDidalamScene.Add (this);
 
@@ -31,10 +32,10 @@ public class TebangPohon : MonoBehaviour {
 		if (Vector3.Distance (this.transform.position, MasterPlayer.instance.transform.position) < 1) {
 
 
-
 			PlayerUdahDeket = true;
 			ManagerGame.Instance.PohonSasaran = this;
 			MasterPlayer.instance.CekUdahDeketPohon = true;
+
 		} else {
 
 			PlayerUdahDeket = false;

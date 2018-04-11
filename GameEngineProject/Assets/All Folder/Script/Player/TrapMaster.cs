@@ -8,6 +8,7 @@ public class TrapMaster : MonoBehaviour {
 
 	void Start()
 	{
+		//this.transform.position = new Vector3 (this.transform.position.x,0,this.transform.position.z);
 		AnimatorTrap = GetComponent<Animator> ();
 	}
 

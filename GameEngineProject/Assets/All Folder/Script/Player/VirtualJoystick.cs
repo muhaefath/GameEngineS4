@@ -95,6 +95,7 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler,IPointerUpHandler,IPo
 
 	public void BeliPeluru()
 	{
+		ManagerGame.Instance.JumlahKayu -= 5;
 		ManagerGame.Instance.JumlahAmunisi += 10;
 	}
 }

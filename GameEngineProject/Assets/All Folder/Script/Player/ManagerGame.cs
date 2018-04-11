@@ -50,10 +50,8 @@ public class ManagerGame : MonoBehaviour {
 	{
 		if(PohonSasaran!=null)
 		{
-			if((Vector3.Distance (PohonSasaran.transform.position, MasterPlayer.instance.transform.position) > 2))
-			{
-				MasterPlayer.instance.CekUdahDeketPohon = false;
-			}
+			
+			MasterPlayer.instance.CekUdahDeketPohon = false;
 		}
 
 		DarahBar.fillAmount = DarahBarInt / 10;

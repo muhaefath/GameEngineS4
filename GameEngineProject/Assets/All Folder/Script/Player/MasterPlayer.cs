@@ -157,11 +157,6 @@ public class MasterPlayer : MonoBehaviour {
 		//TombakDipegang.SetActive (true);
 	}
 
-	public void TebangPohon()
-	{
-		
-		//StartCoroutine ();
-	}
 
 	public IEnumerator JedaTebangPohon()
 	{
@@ -176,19 +171,23 @@ public class MasterPlayer : MonoBehaviour {
 			AnimatorKarakrer.SetBool ("Tebang",true);
 
 		} else {
+			
 			ManagerGame.Instance.JumlahKayu += 10;
 			KapakDipegang.SetActive (false);
 			TombakDipegang.SetActive (true);
 			ManagerGame.Instance.DaftarPohonDidalamScene.Remove (ManagerGame.Instance.PohonSasaran);
-			Destroy (ManagerGame.Instance.PohonSasaran.gameObject);
+			ManagerGame.Instance.PohonSasaran.Anim.Play ("tumbang");
+			Destroy (ManagerGame.Instance.PohonSasaran.gameObject,1.5f);
 			ManagerGame.Instance.PohonSasaran = null;
+		
 
-			CekUdahDeketPohon = false;
 			AnimatorKarakrer.SetBool ("Tebang",false);
 			TembakPeluruBool = false;
 
 			WaktuJedaTebangPohon = 2f;
 			yield return 0;
+
+			CekUdahDeketPohon = false;
 		}
 	}
 	public void LepasButtonTebangPohon()
@@ -220,11 +219,17 @@ public class MasterPlayer : MonoBehaviour {
 			TombakDipegang.SetActive (false);
 			yield return 0;
 		} else {
+			
 			if (IndexJebakan == 0) {
-				Instantiate (Trap1, PosisiTrap1.position, PosisiTrap1.rotation);
+				ManagerGame.Instance.JumlahKayu -= 2;
+				GameObject build = Instantiate (Trap1, PosisiTrap1.position, PosisiTrap1.rotation) as GameObject; 
+				build.transform.parent = ParentTrap2.transform;
+				build.transform.rotation = Quaternion.Euler (build.transform.rotation.x,0,build.transform.rotation.z);
+
 				CekTombolJebakanDipencetTrap1 = false;
 			} else if(IndexJebakan == 1) {
 				//Instantiate (Trap2, PosisiTrap2.position, PosisiTrap2.transform.rotation);
+				ManagerGame.Instance.JumlahKayu -= 2;
 				GameObject build = Instantiate (Trap2,PosisiTrap2.position,PosisiTrap2.rotation) as GameObject; 
 				build.transform.parent = ParentTrap2.transform;
 
@@ -232,6 +237,7 @@ public class MasterPlayer : MonoBehaviour {
 				CekTombolJebakanDipencetTrap2 = false;
 			} else if(IndexJebakan == 2)
 			{
+				ManagerGame.Instance.JumlahKayu -= 5;
 				Instantiate (PartnerPrefab, PosisiPartner.position, PosisiPartner.rotation);
 				CekTombolBuatPartner = false;
 			}
@@ -243,6 +249,7 @@ public class MasterPlayer : MonoBehaviour {
 
 
 			TombakDipegang.SetActive (true);
+
 		}
 	}
 
