@@ -104,6 +104,7 @@ public class MasterPlayer : MonoBehaviour {
 			
 			if(CekUdahDeketPohon == true)
 			{
+				
 				StartCoroutine (JedaTebangPohon());
 				//TembakPeluruBool = false;
 
@@ -165,6 +166,7 @@ public class MasterPlayer : MonoBehaviour {
 	{
 		
 		if (WaktuJedaTebangPohon > 0) {
+			
 			KapakDipegang.SetActive (true);
 			TombakDipegang.SetActive (false);
 
@@ -172,7 +174,8 @@ public class MasterPlayer : MonoBehaviour {
 			ManagerGame.Instance.PohonSasaran.JumlahBarTebangPohon -= Time.deltaTime;
 			ManagerGame.Instance.PohonSasaran.BarProgressTebangPohon.enabled = true;
 			AnimatorKarakrer.SetBool ("Tebang",true);
-			AudioPlayer [2].Play ();
+
+			yield return 0;
 		} else {
 			
 			ManagerGame.Instance.JumlahKayu += 10;
@@ -189,11 +192,35 @@ public class MasterPlayer : MonoBehaviour {
 			TembakPeluruBool = false;
 
 			WaktuJedaTebangPohon = 2f;
-			yield return 0;
+			AudioPlayer [2].Stop ();
 
 
 		}
 	}
+
+	public IEnumerator JedaTebangPohon2()
+	{	
+		
+		yield return new WaitForSeconds(2);
+
+		ManagerGame.Instance.JumlahKayu += 10;
+		KapakDipegang.SetActive (false);
+		TombakDipegang.SetActive (true);
+		ManagerGame.Instance.DaftarPohonDidalamScene.Remove (ManagerGame.Instance.PohonSasaran);
+		ManagerGame.Instance.PohonSasaran.Anim.Play ("tumbang");
+		Destroy (ManagerGame.Instance.PohonSasaran.gameObject,1.5f);
+		ManagerGame.Instance.PohonSasaran = null;
+
+
+		AnimatorKarakrer.SetBool ("Tebang",false);
+		AudioPlayer [2].Stop ();
+
+		TembakPeluruBool = false;
+
+		WaktuJedaTebangPohon = 2f;
+		LepasButtonTebangPohon ();
+	}
+
 	public void LepasButtonTebangPohon()
 	{
 		
@@ -206,7 +233,7 @@ public class MasterPlayer : MonoBehaviour {
 		TombakDipegang.SetActive (true);
 
 		AnimatorKarakrer.SetBool ("Tebang",false);
-		AudioPlayer [2].Stop ();
+
 		TembakPeluruBool = false;
 
 		WaktuJedaTebangPohon = 2f;
@@ -254,7 +281,7 @@ public class MasterPlayer : MonoBehaviour {
 
 
 			TombakDipegang.SetActive (true);
-
+			MasterPlayer.instance.AudioPlayer [3].Stop ();
 		}
 	}
 

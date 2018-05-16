@@ -61,6 +61,9 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler,IPointerUpHandler,IPo
 	{
 		
 		MasterPlayer.instance.TembakPeluruBool = true;
+		if (MasterPlayer.instance.CekUdahDeketPohon) {
+			MasterPlayer.instance.AudioPlayer [2].Play ();
+		}
 	}
 
 	public void JoystcikDiangkat()
@@ -71,6 +74,7 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler,IPointerUpHandler,IPo
 		if(MasterPlayer.instance.CekUdahDeketPohon == true)
 		{
 			MasterPlayer.instance.LepasButtonTebangPohon ();
+			MasterPlayer.instance.AudioPlayer [2].Stop ();
 			return;
 		}
 
@@ -79,10 +83,12 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler,IPointerUpHandler,IPo
 	public void TombolTrapDiangkat()
 	{
 		MasterPlayer.instance.LepasButtonRakitTrap ();
+		MasterPlayer.instance.AudioPlayer [3].Stop ();
 	}
 
 	public void JoystickRakitTrap(int IndexTrap)
 	{
+		MasterPlayer.instance.AudioPlayer [3].Play ();
 		if (IndexTrap == 0) {
 			MasterPlayer.instance.CekTombolJebakanDipencetTrap1 = true;
 		} else if(IndexTrap == 1)
