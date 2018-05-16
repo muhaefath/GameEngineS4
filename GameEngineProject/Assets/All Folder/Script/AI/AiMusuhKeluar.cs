@@ -15,8 +15,8 @@ public class AiMusuhKeluar : MonoBehaviour {
 
 	public void Update()
 	{
-		if (ManagerGame.Instance.WaktuSiang == false && ManagerGame.Instance.MusuhKeluarWave == false) {
-			if (ManagerGame.Instance.JumlahMusuhKeluar < ManagerGame.Instance.WaveLevel * 2 + 3) {
+		if (ManagerGame.Instance.WaktuSiang == false && ManagerGame.Instance.MusuhKeluarWave == false && ManagerGame.Instance.WaveLevel < ManagerGame.Instance.JumlahMaksimalMusuh.Length) {
+			if (ManagerGame.Instance.JumlahMusuhKeluar < ManagerGame.Instance.JumlahMaksimalMusuh[ManagerGame.Instance.WaveLevel]) {
 				Matahari.speed = 0;
 				StartCoroutine (KeluarMusuh ());
 			} else {

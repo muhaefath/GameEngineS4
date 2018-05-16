@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PeluruPlayer : MonoBehaviour {
 
 	public float SpeedPeluru;
@@ -25,6 +25,11 @@ public class PeluruPlayer : MonoBehaviour {
 			ManagerGame.Instance.DaftarMusuhDidalamScene.Remove (col.gameObject.GetComponent<AiMusuhKejarTarget>());
 			Destroy (col.gameObject);
 			Destroy (gameObject);
+			ManagerGame.Instance.JumlahMusuhTerbunuh += 1;
+			if(ManagerGame.Instance.JumlahMusuhTerbunuh == ManagerGame.Instance.MaxJumlahMusuhTerbunuh)
+			{
+				SceneManager.LoadScene ("Winning");
+			}
 		}
 	}
 }

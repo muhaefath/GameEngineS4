@@ -28,6 +28,11 @@ public class ManagerGame : MonoBehaviour {
 
 	public int WaveLevel;
 	public int JumlahMusuhKeluar;
+	public int[] JumlahMaksimalMusuh;
+
+	public int JumlahMusuhTerbunuh;
+	public int MaxJumlahMusuhTerbunuh;
+
 	public bool WaktuSiang;
 
 	public bool MusuhKeluarWave;

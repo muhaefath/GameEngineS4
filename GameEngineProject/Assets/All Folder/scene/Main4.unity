@@ -5250,9 +5250,9 @@ MonoBehaviour:
   - {fileID: 1681948779}
   WaveLevel: 0
   JumlahMusuhKeluar: 0
-  JumlahMaksimalMusuh: 0100000003000000
+  JumlahMaksimalMusuh: 0500000007000000
   JumlahMusuhTerbunuh: 0
-  MaxJumlahMusuhTerbunuh: 4
+  MaxJumlahMusuhTerbunuh: 17
   WaktuSiang: 0
   MusuhKeluarWave: 0
 --- !u!1001 &1240889785
