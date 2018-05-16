@@ -39,12 +39,13 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler,IPointerUpHandler,IPo
 			//Debug.Log(inputvector);
 			virjoystrick.rectTransform.anchoredPosition = new Vector3 (inputvector.x * (background.rectTransform.sizeDelta.x/2), inputvector.z * (background.rectTransform.sizeDelta.y/2));
 		//	virjoystrick.rectTransform.anchoredPosition = new Vector3 (inputvector.y * (background.rectTransform.sizeDelta.y/2));
-				
+					
 		}
 	}
 
 	public virtual void OnPointerDown(PointerEventData ped)
 	{
+		MasterPlayer.instance.AudioPlayer[0].Play();
 		OnDrag (ped);
 	}
 
@@ -52,7 +53,7 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler,IPointerUpHandler,IPo
 	{
 		inputvector = Vector3.zero;
 		virjoystrick.rectTransform.anchoredPosition = Vector3.zero;
-
+		MasterPlayer.instance.AudioPlayer[0].Stop();	
 	}
 
 

@@ -65,6 +65,8 @@ public class MasterPlayer : MonoBehaviour {
 
 	public bool CekUdahDeketPohon = false; // bila sudah dekak pohon joystick nembak berubah jadi tebang pohon
 
+	public AudioSource[] AudioPlayer;
+
 	void Awake()
 	{
 		instance = this;
@@ -104,6 +106,7 @@ public class MasterPlayer : MonoBehaviour {
 			{
 				StartCoroutine (JedaTebangPohon());
 				//TembakPeluruBool = false;
+
 				return;
 			}
 			if (ManagerGame.Instance.JumlahAmunisi > 0) {
@@ -153,7 +156,7 @@ public class MasterPlayer : MonoBehaviour {
 		AnimatorKarakrer.Play ("Tembak");
 
 		StartCoroutine (JedaTembakPeluru());
-		
+
 		//TombakDipegang.SetActive (true);
 	}
 
@@ -169,7 +172,7 @@ public class MasterPlayer : MonoBehaviour {
 			ManagerGame.Instance.PohonSasaran.JumlahBarTebangPohon -= Time.deltaTime;
 			ManagerGame.Instance.PohonSasaran.BarProgressTebangPohon.enabled = true;
 			AnimatorKarakrer.SetBool ("Tebang",true);
-
+			AudioPlayer [2].Play ();
 		} else {
 			
 			ManagerGame.Instance.JumlahKayu += 10;
@@ -182,6 +185,7 @@ public class MasterPlayer : MonoBehaviour {
 		
 
 			AnimatorKarakrer.SetBool ("Tebang",false);
+
 			TembakPeluruBool = false;
 
 			WaktuJedaTebangPohon = 2f;
@@ -202,6 +206,7 @@ public class MasterPlayer : MonoBehaviour {
 		TombakDipegang.SetActive (true);
 
 		AnimatorKarakrer.SetBool ("Tebang",false);
+		AudioPlayer [2].Stop ();
 		TembakPeluruBool = false;
 
 		WaktuJedaTebangPohon = 2f;
@@ -282,6 +287,7 @@ public class MasterPlayer : MonoBehaviour {
 			WaktuJedaTembakPeluru = 0.5f;
 			TombakDipegang.SetActive (false);
 			Instantiate (PeluruPrefab,PosisiPeluruKeluar.transform.position,PosisiPeluruKeluar.transform.rotation);
+			AudioPlayer [1].Play ();
 			ManagerGame.Instance.JumlahAmunisi -= 1;
 			TembakPeluruBool = false;
 			StartCoroutine (JedaTombakMuncul());
