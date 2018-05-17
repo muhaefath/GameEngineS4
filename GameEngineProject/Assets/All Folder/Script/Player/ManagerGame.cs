@@ -37,8 +37,12 @@ public class ManagerGame : MonoBehaviour {
 
 	public bool MusuhKeluarWave;
 
+	public int LevelBerapa;
+
 	void Awake()
 	{
+		PlayerPrefs.SetInt ("Level",LevelBerapa);
+		Debug.Log (PlayerPrefs.GetInt("Level"));
 		Instance = this;
 		PohonSasaran = null;
 	}

@@ -1857,7 +1857,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400002, guid: d09545f0a6492bf4ea21fa186fd39575, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 449211738}
-  m_LocalRotation: {x: -0.28501296, y: -0.64712256, z: -0.64712256, w: 0.28501296}
+  m_LocalRotation: {x: -0.285013, y: -0.6471226, z: -0.6471226, w: 0.285013}
   m_LocalPosition: {x: 10.28, y: 0.43, z: 6.35}
   m_LocalScale: {x: 64.46057, y: 64.46056, z: 64.46055}
   m_Children: []
@@ -2353,7 +2353,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400002, guid: d09545f0a6492bf4ea21fa186fd39575, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 509707084}
-  m_LocalRotation: {x: -0.31035993, y: -0.51938784, z: -0.7181734, w: 0.34371486}
+  m_LocalRotation: {x: -0.31035995, y: -0.5193879, z: -0.71817344, w: 0.3437149}
   m_LocalPosition: {x: 0.94, y: 0.2, z: -12.97}
   m_LocalScale: {x: 46.663795, y: 46.66378, z: 46.66377}
   m_Children: []
@@ -5255,6 +5255,7 @@ MonoBehaviour:
   MaxJumlahMusuhTerbunuh: 6
   WaktuSiang: 0
   MusuhKeluarWave: 0
+  LevelBerapa: 2
 --- !u!1001 &1240889785
 Prefab:
   m_ObjectHideFlags: 0

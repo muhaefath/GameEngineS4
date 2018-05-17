@@ -9,6 +9,16 @@ public class SceneManage : MonoBehaviour {
 		SceneManager.LoadScene (NamaScene);
 	}
 
+	public void NextLevel()
+	{
+		SceneManager.LoadScene ("Main" + (PlayerPrefs.GetInt("Level") + 1 ) );
+	}
+	public void PlayAgain()
+	{
+		SceneManager.LoadScene ("Main" + PlayerPrefs.GetInt("Level") );
+	}
+
+
 	public void KeluarGame()
 	{
 		Application.Quit ();
