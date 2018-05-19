@@ -9,6 +9,15 @@ EditorBuildSettings:
     path: Assets/All Folder/scene/MenuUtama.unity
     guid: 75406403bab060b4fa6c5d2853ba27e8
   - enabled: 1
+    path: Assets/All Folder/scene/Credits.unity
+    guid: 4e6ac4e9b95b97745a63f64f8e09c42d
+  - enabled: 1
+    path: Assets/All Folder/scene/Option.unity
+    guid: 8567d68d81ad7234f86ab215f9147805
+  - enabled: 1
+    path: Assets/All Folder/scene/SelectLevel.unity
+    guid: d1bd089c59d152d4e998c199102b0f9a
+  - enabled: 1
     path: Assets/All Folder/scene/Main1.unity
     guid: f732e9197e5601d43bb63314854e6e3c
   - enabled: 1
