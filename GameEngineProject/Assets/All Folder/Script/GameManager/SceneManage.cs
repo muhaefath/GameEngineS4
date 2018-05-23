@@ -9,6 +9,7 @@ public class SceneManage : MonoBehaviour {
 		PlayerPrefs.SetString ("Scene",NamaScene);
 
 		SceneManager.LoadScene ("LoadingScreen");
+		ManagerAllScene.Control.BackSoundMenu.enabled = false;
 	}
 
 	public void PindahScene2(string NamaScene)
@@ -16,6 +17,11 @@ public class SceneManage : MonoBehaviour {
 		PlayerPrefs.SetString ("Scene",NamaScene);
 
 		SceneManager.LoadScene (NamaScene);
+		ManagerAllScene.Control.BackSoundMenu.enabled = true;
+		if(NamaScene == "MenuUtama")
+		{
+			ManagerAllScene.Control.BackSoundWinning.enabled = false;
+		}
 	}
 
 	public void NextLevel()

@@ -6,6 +6,8 @@ public class ManagerAllScene : MonoBehaviour {
 
 	public static ManagerAllScene Control;
 	public int LevelTelahSelesai;
+	public AudioSource BackSoundMenu;
+	public AudioSource BackSoundWinning;
 
 	void Awake()
 	{
@@ -14,6 +16,7 @@ public class ManagerAllScene : MonoBehaviour {
 			Control = this;
 		} else {
 			Destroy (gameObject);
+
 		}
 	}
 	// Use this for initialization
@@ -25,4 +28,7 @@ public class ManagerAllScene : MonoBehaviour {
 	void Update () {
 		
 	}
+
+
+
 }

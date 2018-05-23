@@ -29,9 +29,11 @@ public class PeluruPlayer : MonoBehaviour {
 
 			if(ManagerGame.Instance.JumlahMusuhTerbunuh == ManagerGame.Instance.MaxJumlahMusuhTerbunuh)
 			{
+				ManagerAllScene.Control.BackSoundWinning.enabled = true;
 				PlayerPrefs.SetString ("Scene","Winning");
 				PlayerPrefs.SetInt ("AllScene",PlayerPrefs.GetInt("Level"));
 				SceneManager.LoadScene ("LoadingScreen");
+
 			}
 		}
 	}

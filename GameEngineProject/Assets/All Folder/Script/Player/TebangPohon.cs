@@ -11,12 +11,18 @@ public class TebangPohon : MonoBehaviour {
 
 	public Animator Anim;
 
+	public GameObject DaunPohon;
+	public GameObject BatangPohon;
+
 	void Awake()
 	{
 		
 	}
 	void Start()
 	{
+		DaunPohon = transform.GetChild (1).gameObject;
+		BatangPohon = transform.GetChild (2).gameObject;
+
 		JumlahBarTebangPohon = 1f;
 		BarProgressTebangPohon = GetComponentInChildren<Image> ();
 		Anim = GetComponent<Animator> ();
@@ -29,7 +35,7 @@ public class TebangPohon : MonoBehaviour {
 	void Update()
 	{
 		BarProgressTebangPohon.fillAmount = JumlahBarTebangPohon;
-		if (Vector3.Distance (this.transform.position, MasterPlayer.instance.transform.position) < 1) {
+		if (Vector3.Distance (this.transform.position, MasterPlayer.instance.transform.position) < 1 && CekUdahDitebang == false) {
 
 
 			PlayerUdahDeket = true;
@@ -44,7 +50,15 @@ public class TebangPohon : MonoBehaviour {
 			
 		if(CekUdahDitebang == true)
 		{
-			Destroy (gameObject);
+			StartCoroutine (HilangDulu());
 		}
+
+	}
+
+	public IEnumerator HilangDulu(){
+		yield return new WaitForSeconds (70f);
+		DaunPohon.SetActive (true);
+		BatangPohon.SetActive (true);
+		CekUdahDitebang = false;
 	}
 }

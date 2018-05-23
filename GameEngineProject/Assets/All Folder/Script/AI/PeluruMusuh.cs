@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PeluruMusuh : MonoBehaviour {
 
 
@@ -26,6 +26,10 @@ public class PeluruMusuh : MonoBehaviour {
 			//Destroy (col.gameObject);
 			MasterPlayer.instance.DarahBarInt -=5;
 			Destroy (gameObject);
+			if(MasterPlayer.instance.DarahBarInt <= 0)
+			{
+				SceneManager.LoadScene ("GameOver");
+			}
 		}
 	}
 
@@ -36,6 +40,10 @@ public class PeluruMusuh : MonoBehaviour {
 			//Destroy (col.gameObject);
 			ManagerGame.Instance.DarahBarInt -=5;
 			Destroy (gameObject);
+			if(ManagerGame.Instance.DarahBarInt <= 0)
+			{
+				SceneManager.LoadScene ("GameOver");
+			}
 		}
 	}
 }

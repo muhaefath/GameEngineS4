@@ -67,6 +67,8 @@ public class MasterPlayer : MonoBehaviour {
 
 	public AudioSource[] AudioPlayer;
 
+
+
 	void Awake()
 	{
 		instance = this;
@@ -181,11 +183,13 @@ public class MasterPlayer : MonoBehaviour {
 			ManagerGame.Instance.JumlahKayu += 3;
 			KapakDipegang.SetActive (false);
 			TombakDipegang.SetActive (true);
-			ManagerGame.Instance.DaftarPohonDidalamScene.Remove (ManagerGame.Instance.PohonSasaran);
+			//ManagerGame.Instance.DaftarPohonDidalamScene.Remove (ManagerGame.Instance.PohonSasaran);
 			ManagerGame.Instance.PohonSasaran.Anim.Play ("tumbang");
-			Destroy (ManagerGame.Instance.PohonSasaran.gameObject,1.5f);
-			ManagerGame.Instance.PohonSasaran = null;
-		
+
+			Invoke("PohonIlang",1.5f);
+
+			//Destroy (ManagerGame.Instance.PohonSasaran.gameObject,1.5f);
+
 
 			AnimatorKarakrer.SetBool ("Tebang",false);
 
@@ -198,6 +202,20 @@ public class MasterPlayer : MonoBehaviour {
 		}
 	}
 
+	 void PohonIlang()
+	{
+		ManagerGame.Instance.PohonSasaran.DaunPohon.SetActive (false);
+		ManagerGame.Instance.PohonSasaran.BatangPohon.SetActive (false);
+		ManagerGame.Instance.PohonSasaran.CekUdahDitebang = true;
+		ManagerGame.Instance.PohonSasaranCurr = ManagerGame.Instance.PohonSasaran;
+
+		ManagerGame.Instance.PohonSasaran = null;
+		//StartCoroutine( HilangDulu ());
+
+	}
+
+
+
 	public IEnumerator JedaTebangPohon2()
 	{	
 		
@@ -208,7 +226,9 @@ public class MasterPlayer : MonoBehaviour {
 		TombakDipegang.SetActive (true);
 		ManagerGame.Instance.DaftarPohonDidalamScene.Remove (ManagerGame.Instance.PohonSasaran);
 		ManagerGame.Instance.PohonSasaran.Anim.Play ("tumbang");
-		Destroy (ManagerGame.Instance.PohonSasaran.gameObject,1.5f);
+		Invoke("PohonIlang",1.5f);
+
+		//Destroy (ManagerGame.Instance.PohonSasaran.gameObject,1.5f);
 		ManagerGame.Instance.PohonSasaran = null;
 
 

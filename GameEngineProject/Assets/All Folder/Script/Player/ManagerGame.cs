@@ -9,6 +9,7 @@ public class ManagerGame : MonoBehaviour {
 	[Header ("Manage Pohon")]
 	public List<TebangPohon> DaftarPohonDidalamScene;
 	public TebangPohon PohonSasaran;
+	public TebangPohon PohonSasaranCurr;
 
 	[Space]
 	[Header ("Manage Musuh")]
@@ -38,6 +39,8 @@ public class ManagerGame : MonoBehaviour {
 	public bool MusuhKeluarWave;
 
 	public int LevelBerapa;
+
+
 
 	void Awake()
 	{
