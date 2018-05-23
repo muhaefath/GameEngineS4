@@ -26,9 +26,12 @@ public class PeluruPlayer : MonoBehaviour {
 			Destroy (col.gameObject);
 			Destroy (gameObject);
 			ManagerGame.Instance.JumlahMusuhTerbunuh += 1;
+
 			if(ManagerGame.Instance.JumlahMusuhTerbunuh == ManagerGame.Instance.MaxJumlahMusuhTerbunuh)
 			{
-				SceneManager.LoadScene ("Winning");
+				PlayerPrefs.SetString ("Scene","Winning");
+				PlayerPrefs.SetInt ("AllScene",PlayerPrefs.GetInt("Level"));
+				SceneManager.LoadScene ("LoadingScreen");
 			}
 		}
 	}

@@ -6,6 +6,15 @@ public class SceneManage : MonoBehaviour {
 
 	public void PindahScene(string NamaScene)
 	{
+		PlayerPrefs.SetString ("Scene",NamaScene);
+
+		SceneManager.LoadScene ("LoadingScreen");
+	}
+
+	public void PindahScene2(string NamaScene)
+	{
+		PlayerPrefs.SetString ("Scene",NamaScene);
+
 		SceneManager.LoadScene (NamaScene);
 	}
 

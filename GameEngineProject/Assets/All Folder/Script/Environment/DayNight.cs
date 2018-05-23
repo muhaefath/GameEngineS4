@@ -5,7 +5,7 @@ using UnityEngine;
 public class DayNight : MonoBehaviour {
 	public float speed;
 
-
+	public float HitungWaktu;
 
 	void Start()
 	{
@@ -13,8 +13,10 @@ public class DayNight : MonoBehaviour {
 	}
 	void Update()
 	{
+		
 		if(this.transform.rotation == Quaternion.Euler(190,0,0))
 		{
+			
 			//ManagerBuilding.Instance.MalamDatang = true;
 			//ManagerBuilding.Instance.MenuBuilding [4].SetActive (true);
 			//Time.timeScale = 0;
@@ -24,12 +26,15 @@ public class DayNight : MonoBehaviour {
 
 
 		if (this.transform.rotation.eulerAngles.x > 0 && this.transform.rotation.eulerAngles.x < 180) {
-			
+			speed = 3f;
 			ManagerGame.Instance.WaktuSiang = true;
 			ManagerGame.Instance.MusuhKeluarWave = false;
-
+			HitungWaktu += Time.deltaTime;
 		} else 
 		{
+			speed = 6;
+
+			HitungWaktu += Time.deltaTime;
 			ManagerGame.Instance.WaktuSiang = false;
 
 		}

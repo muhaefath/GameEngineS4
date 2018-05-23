@@ -90,7 +90,7 @@ public class MasterPlayer : MonoBehaviour {
 	void Update()
 	{
 		BarTrap.fillAmount = IntBarTrap / 3;
-		DarahaBar.fillAmount  =  DarahBarInt / 10;
+		DarahaBar.fillAmount  =  DarahBarInt / 100;
 
 
 		if (joystick.inputvector == Vector3.zero) {
@@ -178,7 +178,7 @@ public class MasterPlayer : MonoBehaviour {
 			yield return 0;
 		} else {
 			
-			ManagerGame.Instance.JumlahKayu += 10;
+			ManagerGame.Instance.JumlahKayu += 3;
 			KapakDipegang.SetActive (false);
 			TombakDipegang.SetActive (true);
 			ManagerGame.Instance.DaftarPohonDidalamScene.Remove (ManagerGame.Instance.PohonSasaran);
@@ -253,7 +253,7 @@ public class MasterPlayer : MonoBehaviour {
 		} else {
 			
 			if (IndexJebakan == 0) {
-				ManagerGame.Instance.JumlahKayu -= 2;
+				ManagerGame.Instance.JumlahKayu -= 15;
 				GameObject build = Instantiate (Trap1, PosisiTrap1.position, PosisiTrap1.rotation) as GameObject; 
 				build.transform.parent = ParentTrap2.transform;
 				build.transform.rotation = Quaternion.Euler (build.transform.rotation.x,0,build.transform.rotation.z);
@@ -261,7 +261,7 @@ public class MasterPlayer : MonoBehaviour {
 				CekTombolJebakanDipencetTrap1 = false;
 			} else if(IndexJebakan == 1) {
 				//Instantiate (Trap2, PosisiTrap2.position, PosisiTrap2.transform.rotation);
-				ManagerGame.Instance.JumlahKayu -= 2;
+				ManagerGame.Instance.JumlahKayu -= 10;
 				GameObject build = Instantiate (Trap2,PosisiTrap2.position,PosisiTrap2.rotation) as GameObject; 
 				build.transform.parent = ParentTrap2.transform;
 
@@ -269,7 +269,7 @@ public class MasterPlayer : MonoBehaviour {
 				CekTombolJebakanDipencetTrap2 = false;
 			} else if(IndexJebakan == 2)
 			{
-				ManagerGame.Instance.JumlahKayu -= 5;
+				ManagerGame.Instance.JumlahKayu -= 30;
 				Instantiate (PartnerPrefab, PosisiPartner.position, PosisiPartner.rotation);
 				CekTombolBuatPartner = false;
 			}

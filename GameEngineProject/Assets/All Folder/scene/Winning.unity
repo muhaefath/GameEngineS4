@@ -223,14 +223,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 562240238}
-        m_MethodName: PindahScene
+        m_MethodName: PindahScene2
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: MenuUtama
+          m_StringArgument: SelectLevel
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -247,6 +247,7 @@ GameObject:
   - component: {fileID: 562240235}
   - component: {fileID: 562240234}
   - component: {fileID: 562240238}
+  - component: {fileID: 562240239}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -341,6 +342,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0aa56752680a06a4d943c6fa6c7161c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &562240239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 562240233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b22357f0bbf4ee4f83fb76c3232c7d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &737882684

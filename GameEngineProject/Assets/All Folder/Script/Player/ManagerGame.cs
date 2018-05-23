@@ -42,7 +42,7 @@ public class ManagerGame : MonoBehaviour {
 	void Awake()
 	{
 		PlayerPrefs.SetInt ("Level",LevelBerapa);
-		Debug.Log (PlayerPrefs.GetInt("Level"));
+
 		Instance = this;
 		PohonSasaran = null;
 	}
@@ -68,7 +68,7 @@ public class ManagerGame : MonoBehaviour {
 			MasterPlayer.instance.CekUdahDeketPohon = false;
 		}
 
-		DarahBar.fillAmount = DarahBarInt / 10;
+		DarahBar.fillAmount = DarahBarInt / 100;
 		JumlahKayuText.text = "" + JumlahKayu;
 		JumlahAmunisiText.text = "" + JumlahAmunisi;
 	}

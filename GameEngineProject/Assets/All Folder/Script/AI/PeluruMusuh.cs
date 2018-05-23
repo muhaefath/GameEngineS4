@@ -24,7 +24,7 @@ public class PeluruMusuh : MonoBehaviour {
 		if(col.gameObject.tag == "Player")
 		{
 			//Destroy (col.gameObject);
-			MasterPlayer.instance.DarahBarInt -=1;
+			MasterPlayer.instance.DarahBarInt -=5;
 			Destroy (gameObject);
 		}
 	}
@@ -34,7 +34,7 @@ public class PeluruMusuh : MonoBehaviour {
 		if(col.gameObject.tag == "Temple")
 		{
 			//Destroy (col.gameObject);
-			ManagerGame.Instance.DarahBarInt -=1;
+			ManagerGame.Instance.DarahBarInt -=5;
 			Destroy (gameObject);
 		}
 	}
