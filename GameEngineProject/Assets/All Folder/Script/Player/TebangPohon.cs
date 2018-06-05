@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 public class TebangPohon : MonoBehaviour {
+	
+
 	public bool CekUdahDitebang = false;
 	public bool PlayerUdahDeket = false;
 
@@ -35,7 +37,8 @@ public class TebangPohon : MonoBehaviour {
 	void Update()
 	{
 		BarProgressTebangPohon.fillAmount = JumlahBarTebangPohon;
-		if (Vector3.Distance (this.transform.position, MasterPlayer.instance.transform.position) < 1 && CekUdahDitebang == false) {
+
+		if (Vector3.Distance (this.transform.position, MasterPlayer.instance.transform.position) < 2 && CekUdahDitebang == false) {
 
 
 			PlayerUdahDeket = true;

@@ -263,12 +263,16 @@ public class MasterPlayer : MonoBehaviour {
 	public IEnumerator PasangJebakan(int IndexJebakan)
 	{
 		if (WaktuJedaTrap >= 0) {
-			BarTrap.enabled = true;
-			IntBarTrap -= Time.deltaTime;
+			if(IndexJebakan == 1 && ManagerGame.Instance.JumlahKayu >=10 || IndexJebakan == 0 && ManagerGame.Instance.JumlahKayu >=15 || IndexJebakan == 2 && ManagerGame.Instance.JumlahKayu >=30)
+			{
+				BarTrap.enabled = true;
+				IntBarTrap -= Time.deltaTime;
 
-			AnimatorKarakrer.SetBool ("Rakit",true);
-			WaktuJedaTrap -= Time.deltaTime;
-			TombakDipegang.SetActive (false);
+				AnimatorKarakrer.SetBool ("Rakit",true);
+				WaktuJedaTrap -= Time.deltaTime;
+				TombakDipegang.SetActive (false);
+				yield return 0;
+			}
 			yield return 0;
 		} else {
 			

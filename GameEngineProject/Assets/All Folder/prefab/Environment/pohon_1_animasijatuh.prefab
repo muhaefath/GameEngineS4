@@ -72,6 +72,9 @@ GameObject:
   - component: {fileID: 4802497196714262}
   - component: {fileID: 95397103130571376}
   - component: {fileID: 114066608577723766}
+  - component: {fileID: 114392741028867134}
+  - component: {fileID: 65658643091343282}
+  - component: {fileID: 114408480069459372}
   m_Layer: 0
   m_Name: pohon_1_animasijatuh
   m_TagString: Untagged
@@ -185,8 +188,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1328026217216434}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.3, z: 9.83}
-  m_LocalScale: {x: 0.22343667, y: 0.22343656, z: 0.22343656}
+  m_LocalPosition: {x: -11.46, y: 0.25, z: 10.47}
+  m_LocalScale: {x: 0.22343999, y: 0.22343999, z: 0.22343999}
   m_Children:
   - {fileID: 4531380998976684}
   - {fileID: 4784188194945770}
@@ -194,7 +197,19 @@ Transform:
   - {fileID: 224181021672128874}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 47.456, z: 0}
+--- !u!65 &65658643091343282
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1328026217216434}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.3131475, y: 8.696693, z: 3.7152746}
+  m_Center: {x: -0.0058218166, y: 3.8483484, z: -0.019714829}
 --- !u!95 &95397103130571376
 Animator:
   serializedVersion: 3
@@ -228,6 +243,8 @@ MonoBehaviour:
   BarProgressTebangPohon: {fileID: 0}
   JumlahBarTebangPohon: 0
   Anim: {fileID: 0}
+  DaunPohon: {fileID: 0}
+  BatangPohon: {fileID: 0}
 --- !u!114 &114187356493853236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -255,6 +272,36 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114392741028867134
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1328026217216434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d07ce676d7afda4dabb3b0f7dd5e654, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
+--- !u!114 &114408480069459372
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1328026217216434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d07ce676d7afda4dabb3b0f7dd5e654, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!114 &114587602630120684
 MonoBehaviour:
   m_ObjectHideFlags: 1

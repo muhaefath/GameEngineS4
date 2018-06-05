@@ -21,6 +21,16 @@ public class PeluruMusuh : MonoBehaviour {
 
 	void OnTriggerEnter(Collider col)
 	{
+		if(col.gameObject.tag == "Temple")
+		{
+			//Destroy (col.gameObject);
+			ManagerGame.Instance.DarahBarInt -=5;
+			Destroy (gameObject);
+			if(ManagerGame.Instance.DarahBarInt <= 0)
+			{
+				SceneManager.LoadScene ("GameOver");
+			}
+		}
 		if(col.gameObject.tag == "Player")
 		{
 			//Destroy (col.gameObject);
@@ -35,15 +45,6 @@ public class PeluruMusuh : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col)
 	{
-		if(col.gameObject.tag == "Temple")
-		{
-			//Destroy (col.gameObject);
-			ManagerGame.Instance.DarahBarInt -=5;
-			Destroy (gameObject);
-			if(ManagerGame.Instance.DarahBarInt <= 0)
-			{
-				SceneManager.LoadScene ("GameOver");
-			}
-		}
+		
 	}
 }

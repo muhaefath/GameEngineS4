@@ -60,7 +60,10 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler,IPointerUpHandler,IPo
 	public void JoystcikNembak()
 	{
 		
-		MasterPlayer.instance.TembakPeluruBool = true;
+		if(ManagerGame.Instance.JumlahAmunisi > 0)
+		{
+			MasterPlayer.instance.TembakPeluruBool = true;
+		}
 		if (MasterPlayer.instance.CekUdahDeketPohon) {
 			MasterPlayer.instance.AudioPlayer [2].Play ();
 		}
@@ -102,7 +105,10 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler,IPointerUpHandler,IPo
 
 	public void BeliPeluru()
 	{
-		ManagerGame.Instance.JumlahKayu -= 5;
-		ManagerGame.Instance.JumlahAmunisi += 10;
+		if(ManagerGame.Instance.JumlahKayu >= 5)
+		{
+			ManagerGame.Instance.JumlahKayu -= 5;
+			ManagerGame.Instance.JumlahAmunisi += 10;
+		}
 	}
 }
