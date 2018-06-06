@@ -24,6 +24,13 @@ public class SceneManage : MonoBehaviour {
 		}
 	}
 
+	public void PindahScene3(string NamaScene)
+	{
+		PlayerPrefs.SetString ("Scene",NamaScene);
+
+		SceneManager.LoadScene (NamaScene);
+	}
+
 	public void NextLevel()
 	{
 		SceneManager.LoadScene ("Main" + (PlayerPrefs.GetInt("Level") + 1 ) );

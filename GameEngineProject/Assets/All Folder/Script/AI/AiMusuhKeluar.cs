@@ -11,7 +11,7 @@ public class AiMusuhKeluar : MonoBehaviour {
 
 	public DayNight Matahari;
 
-
+	public GameObject ParentMusuh;
 
 	public void Update()
 	{
@@ -36,7 +36,9 @@ public class AiMusuhKeluar : MonoBehaviour {
 			yield return 0;
 		} else {
 			int IndexPosisi = Random.Range (0,3);
-			Instantiate (MusuhPrefab,PosisiKeluarMusuh[IndexPosisi].position,PosisiKeluarMusuh[IndexPosisi].rotation);
+			 
+			GameObject musuh = Instantiate (MusuhPrefab,PosisiKeluarMusuh[IndexPosisi].position,PosisiKeluarMusuh[IndexPosisi].rotation) as GameObject;
+			musuh.transform.parent = ParentMusuh.transform;
 			ManagerGame.Instance.JumlahMusuhKeluar += 1;
 			WaktuJedaMusuhKeluar = 3;
 		}

@@ -40,7 +40,7 @@ public class ManagerGame : MonoBehaviour {
 
 	public int LevelBerapa;
 
-
+	public GameObject PauseMenu;
 
 	void Awake()
 	{
@@ -90,4 +90,19 @@ public class ManagerGame : MonoBehaviour {
 		}
 		ManageTrap [0].SetActive(false) ;	
 	}
+
+
+	public void BukaMenuPause()
+	{
+		PauseMenu.SetActive (true);
+		Time.timeScale = 0;
+	}
+
+	public void TutupMenuPause()
+	{
+		PauseMenu.SetActive (false);
+		Time.timeScale = 1;
+	}
+
+
 }
