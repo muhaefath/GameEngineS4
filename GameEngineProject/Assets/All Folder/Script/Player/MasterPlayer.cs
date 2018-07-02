@@ -76,7 +76,7 @@ public class MasterPlayer : MonoBehaviour {
 
 	void Start()
 	{
-		
+		this.transform.localPosition = new Vector3 (0,0.246f,-0.142f);
 
 		AnimatorKarakrer = GetComponent<Animator> ();
 
