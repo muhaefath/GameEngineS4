@@ -76,7 +76,7 @@ public class MasterPlayer : MonoBehaviour {
 
 	void Start()
 	{
-		this.transform.localPosition = new Vector3 (0,0.246f,-0.142f);
+		//this.transform.localPosition = new Vector3 (0,0.246f,-0.142f);
 
 		AnimatorKarakrer = GetComponent<Animator> ();
 
@@ -294,7 +294,9 @@ public class MasterPlayer : MonoBehaviour {
 			} else if(IndexJebakan == 2)
 			{
 				ManagerGame.Instance.JumlahKayu -= 30;
-				Instantiate (PartnerPrefab, PosisiPartner.position, PosisiPartner.rotation);
+				GameObject build =  Instantiate (PartnerPrefab, PosisiPartner.position, PosisiPartner.rotation) as GameObject;
+				//build.GetComponent<UnityEngine.AI.NavMeshAgent> ().Warp(PosisiPartner.position);
+
 				CekTombolBuatPartner = false;
 			}
 
@@ -358,8 +360,8 @@ public class MasterPlayer : MonoBehaviour {
 		transform.rotation = Quaternion.Euler(MoveVector);
 		transform.Translate(0,0, SpeedJalanPlayer*Time.deltaTime);
 
-		PrefabKarakterUtama.transform.rotation = this.transform.rotation;
-		PrefabKarakterUtama.transform.position = this.transform.position;
+		PrefabKarakterUtama.transform.localRotation = this.transform.localRotation;
+		PrefabKarakterUtama.transform.localPosition = this.transform.localPosition;
 
 	}
 

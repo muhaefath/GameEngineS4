@@ -9,6 +9,7 @@ TagManager:
   - Temple
   - Trap1
   - PeluruMusuh
+  - XRController
   layers:
   - Default
   - TransparentFX

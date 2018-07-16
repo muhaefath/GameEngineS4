@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class TrapMaster : MonoBehaviour {
 
 	Animator AnimatorTrap;
@@ -18,6 +18,20 @@ public class TrapMaster : MonoBehaviour {
 		{
 			AnimatorTrap.Play ("Attack");
 			Destroy (col.gameObject);
+
+			Debug.Log (col.gameObject.GetComponent<AiMusuhKejarTarget>());
+			ManagerGame.Instance.DaftarMusuhDidalamScene.Remove (col.gameObject.GetComponent<AiMusuhKejarTarget>());
+		
+			ManagerGame.Instance.JumlahMusuhTerbunuh += 1;
+
+			if(ManagerGame.Instance.JumlahMusuhTerbunuh == ManagerGame.Instance.MaxJumlahMusuhTerbunuh)
+			{
+				ManagerAllScene.Control.BackSoundWinning.enabled = true;
+				PlayerPrefs.SetString ("Scene","Winning");
+				PlayerPrefs.SetInt ("AllScene",PlayerPrefs.GetInt("Level"));
+				SceneManager.LoadScene ("LoadingScreen");
+
+			}
 		}
 	}
 }

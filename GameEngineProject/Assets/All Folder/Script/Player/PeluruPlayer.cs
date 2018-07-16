@@ -22,10 +22,14 @@ public class PeluruPlayer : MonoBehaviour {
 	{
 		if(col.gameObject.tag == "Enemy")
 		{
+			Debug.Log (col.gameObject.GetComponent<AiMusuhKejarTarget>());
 			ManagerGame.Instance.DaftarMusuhDidalamScene.Remove (col.gameObject.GetComponent<AiMusuhKejarTarget>());
 			Destroy (col.gameObject);
 			Destroy (gameObject);
 			ManagerGame.Instance.JumlahMusuhTerbunuh += 1;
+
+
+
 
 			if(ManagerGame.Instance.JumlahMusuhTerbunuh == ManagerGame.Instance.MaxJumlahMusuhTerbunuh)
 			{

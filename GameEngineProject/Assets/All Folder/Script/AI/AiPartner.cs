@@ -31,12 +31,24 @@ public class AiPartner : MonoBehaviour {
 	public NavMeshHit hit;
 
 	// Use this for initialization
+	void Awake()
+	{
+
+	}
 	void Start () {
 		PartnerAgent = GetComponent<NavMeshAgent> ();
 		AnimatorKarakrer = GetComponent<Animator> ();
 		//IndexPohon = 
-		PartnerAgent.Warp(this.transform.position);
 
+
+	
+	
+		PartnerAgent.Warp (this.transform.position);
+			
+			PartnerAgent.enabled = false;
+			PartnerAgent.enabled = true;
+
+		
 
 	}
 	
@@ -100,19 +112,20 @@ public class AiPartner : MonoBehaviour {
 			PartnerAgent.speed = 1;
 			AnimatorKarakrer.SetBool ("Jalan",true);
 			//this.transform.Translate (0, 0, Speed * Time.deltaTime);
-
+			//PartnerAgent.Warp(SasaranPohon.transform.position);
+			//PartnerAgent.isStopped = false;
 			PartnerAgent.SetDestination (SasaranPohon.transform.position);
 
+			//PartnerAgent.SetDestination (SasaranPohon.transform.position);
 		} else {
 			PartnerAgent.speed = 0;
 			AnimatorKarakrer.SetBool ("Jalan",false);
 			StartCoroutine (TebangPohon());
 
-		
+
 
 		}
 	}
-
 	 IEnumerator TebangPohon()
 	{
 

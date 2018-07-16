@@ -11,14 +11,19 @@ public class LoadingManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Time.timeScale = 1;
 		for (int i = 0; i < KumpulanTips.Length; i++) {
 			KumpulanTips [i].SetActive (false);
 		}
 		KumpulanTips [Random.Range (0, 8)].SetActive (true);
+		IndexLoadingBar = 0;
+		WaktuLoading = 0.6f;
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		
 		StartCoroutine (PindahScene());
 	}
 
@@ -28,9 +33,11 @@ public class LoadingManager : MonoBehaviour {
 
 	IEnumerator PindahScene()
 	{
+		
 		if (WaktuLoading > 0) {
-			WaktuLoading -= Time.deltaTime;
+			WaktuLoading -= 1 * Time.deltaTime;
 			yield return 0;
+	
 		} else {
 			if (IndexLoadingBar == 5) {
 				IndexLoadingBar = -1;
