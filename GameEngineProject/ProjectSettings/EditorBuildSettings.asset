@@ -25,7 +25,7 @@ EditorBuildSettings:
     guid: d1bd089c59d152d4e998c199102b0f9a
   - enabled: 1
     path: Assets/All Folder/scene/Main1.unity
-    guid: 389e3b4fae174fc499b0c6ad589ea69b
+    guid: c15b80b84f6c4d04cb359c27955d4f07
   - enabled: 1
     path: Assets/All Folder/scene/Main2.unity
     guid: e5d23e35869ac364c89480b1c901dfc2
